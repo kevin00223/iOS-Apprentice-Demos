@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A2937DE01EE6BBC200A3EB1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DDF1EE6BBC200A3EB1F /* main.m */; };
+		A2937DE31EE6BBC200A3EB1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DE21EE6BBC200A3EB1F /* AppDelegate.m */; };
+		A2937DE61EE6BBC200A3EB1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DE51EE6BBC200A3EB1F /* ViewController.m */; };
+		A2937DE91EE6BBC200A3EB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2937DE71EE6BBC200A3EB1F /* Main.storyboard */; };
+		A2937DEB1EE6BBC200A3EB1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2937DEA1EE6BBC200A3EB1F /* Assets.xcassets */; };
+		A2937DEE1EE6BBC200A3EB1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2937DEC1EE6BBC200A3EB1F /* LaunchScreen.storyboard */; };
+		A2937DF91EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DF81EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m */; };
+		A2937E041EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937E031EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m */; };
+		F1F157B5FA92C0FAFB45730A /* libPods-Bull's Eye Game.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6DB6A3B4324EFF34C137AD /* libPods-Bull's Eye Game.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2937DF51EE6BBC200A3EB1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2937DD31EE6BBC200A3EB1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2937DDA1EE6BBC200A3EB1F;
+			remoteInfo = "Bull's Eye Game";
+		};
+		A2937E001EE6BBC200A3EB1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2937DD31EE6BBC200A3EB1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2937DDA1EE6BBC200A3EB1F;
+			remoteInfo = "Bull's Eye Game";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17F8D9F310200AD7F7017621 /* Pods-Bull's Eye Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bull's Eye Game.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game.release.xcconfig"; sourceTree = "<group>"; };
+		A2937DDB1EE6BBC200A3EB1F /* Bull's Eye Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull's Eye Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2937DDF1EE6BBC200A3EB1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A2937DE11EE6BBC200A3EB1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A2937DE21EE6BBC200A3EB1F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A2937DE41EE6BBC200A3EB1F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A2937DE51EE6BBC200A3EB1F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A2937DE81EE6BBC200A3EB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A2937DEA1EE6BBC200A3EB1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2937DED1EE6BBC200A3EB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2937DEF1EE6BBC200A3EB1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2937DF41EE6BBC200A3EB1F /* Bull's Eye GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bull's Eye GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2937DF81EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_s_Eye_GameTests.m; sourceTree = "<group>"; };
+		A2937DFA1EE6BBC200A3EB1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2937DFF1EE6BBC200A3EB1F /* Bull's Eye GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bull's Eye GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2937E031EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_s_Eye_GameUITests.m; sourceTree = "<group>"; };
+		A2937E051EE6BBC200A3EB1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C08B7EB958274672AC21BA94 /* Pods-Bull's Eye Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bull's Eye Game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game.debug.xcconfig"; sourceTree = "<group>"; };
+		FC6DB6A3B4324EFF34C137AD /* libPods-Bull's Eye Game.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bull's Eye Game.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2937DD81EE6BBC200A3EB1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1F157B5FA92C0FAFB45730A /* libPods-Bull's Eye Game.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DF11EE6BBC200A3EB1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DFC1EE6BBC200A3EB1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		414893C94B6D2ABD63E7F970 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC6DB6A3B4324EFF34C137AD /* libPods-Bull's Eye Game.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CBA89F9013573BC8D5C611C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C08B7EB958274672AC21BA94 /* Pods-Bull's Eye Game.debug.xcconfig */,
+				17F8D9F310200AD7F7017621 /* Pods-Bull's Eye Game.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A2937DD21EE6BBC200A3EB1F = {
+			isa = PBXGroup;
+			children = (
+				A2937DDD1EE6BBC200A3EB1F /* Bull's Eye Game */,
+				A2937DF71EE6BBC200A3EB1F /* Bull's Eye GameTests */,
+				A2937E021EE6BBC200A3EB1F /* Bull's Eye GameUITests */,
+				A2937DDC1EE6BBC200A3EB1F /* Products */,
+				6CBA89F9013573BC8D5C611C /* Pods */,
+				414893C94B6D2ABD63E7F970 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A2937DDC1EE6BBC200A3EB1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2937DDB1EE6BBC200A3EB1F /* Bull's Eye Game.app */,
+				A2937DF41EE6BBC200A3EB1F /* Bull's Eye GameTests.xctest */,
+				A2937DFF1EE6BBC200A3EB1F /* Bull's Eye GameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2937DDD1EE6BBC200A3EB1F /* Bull's Eye Game */ = {
+			isa = PBXGroup;
+			children = (
+				A2937DE11EE6BBC200A3EB1F /* AppDelegate.h */,
+				A2937DE21EE6BBC200A3EB1F /* AppDelegate.m */,
+				A2937DE41EE6BBC200A3EB1F /* ViewController.h */,
+				A2937DE51EE6BBC200A3EB1F /* ViewController.m */,
+				A2937DE71EE6BBC200A3EB1F /* Main.storyboard */,
+				A2937DEA1EE6BBC200A3EB1F /* Assets.xcassets */,
+				A2937DEC1EE6BBC200A3EB1F /* LaunchScreen.storyboard */,
+				A2937DEF1EE6BBC200A3EB1F /* Info.plist */,
+				A2937DDE1EE6BBC200A3EB1F /* Supporting Files */,
+			);
+			path = "Bull's Eye Game";
+			sourceTree = "<group>";
+		};
+		A2937DDE1EE6BBC200A3EB1F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2937DDF1EE6BBC200A3EB1F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A2937DF71EE6BBC200A3EB1F /* Bull's Eye GameTests */ = {
+			isa = PBXGroup;
+			children = (
+				A2937DF81EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m */,
+				A2937DFA1EE6BBC200A3EB1F /* Info.plist */,
+			);
+			path = "Bull's Eye GameTests";
+			sourceTree = "<group>";
+		};
+		A2937E021EE6BBC200A3EB1F /* Bull's Eye GameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A2937E031EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m */,
+				A2937E051EE6BBC200A3EB1F /* Info.plist */,
+			);
+			path = "Bull's Eye GameUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2937DDA1EE6BBC200A3EB1F /* Bull's Eye Game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2937E081EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye Game" */;
+			buildPhases = (
+				75AC6409B6838C63597C4967 /* [CP] Check Pods Manifest.lock */,
+				A2937DD71EE6BBC200A3EB1F /* Sources */,
+				A2937DD81EE6BBC200A3EB1F /* Frameworks */,
+				A2937DD91EE6BBC200A3EB1F /* Resources */,
+				CEF6F2BBEF1E66BACC1629E5 /* [CP] Embed Pods Frameworks */,
+				F02517941E91694BA9E0AAEA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bull's Eye Game";
+			productName = "Bull's Eye Game";
+			productReference = A2937DDB1EE6BBC200A3EB1F /* Bull's Eye Game.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A2937DF31EE6BBC200A3EB1F /* Bull's Eye GameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2937E0B1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameTests" */;
+			buildPhases = (
+				A2937DF01EE6BBC200A3EB1F /* Sources */,
+				A2937DF11EE6BBC200A3EB1F /* Frameworks */,
+				A2937DF21EE6BBC200A3EB1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2937DF61EE6BBC200A3EB1F /* PBXTargetDependency */,
+			);
+			name = "Bull's Eye GameTests";
+			productName = "Bull's Eye GameTests";
+			productReference = A2937DF41EE6BBC200A3EB1F /* Bull's Eye GameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A2937DFE1EE6BBC200A3EB1F /* Bull's Eye GameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2937E0E1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameUITests" */;
+			buildPhases = (
+				A2937DFB1EE6BBC200A3EB1F /* Sources */,
+				A2937DFC1EE6BBC200A3EB1F /* Frameworks */,
+				A2937DFD1EE6BBC200A3EB1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2937E011EE6BBC200A3EB1F /* PBXTargetDependency */,
+			);
+			name = "Bull's Eye GameUITests";
+			productName = "Bull's Eye GameUITests";
+			productReference = A2937DFF1EE6BBC200A3EB1F /* Bull's Eye GameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2937DD31EE6BBC200A3EB1F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = yinbake;
+				TargetAttributes = {
+					A2937DDA1EE6BBC200A3EB1F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					A2937DF31EE6BBC200A3EB1F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A2937DDA1EE6BBC200A3EB1F;
+					};
+					A2937DFE1EE6BBC200A3EB1F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A2937DDA1EE6BBC200A3EB1F;
+					};
+				};
+			};
+			buildConfigurationList = A2937DD61EE6BBC200A3EB1F /* Build configuration list for PBXProject "Bull's Eye Game" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2937DD21EE6BBC200A3EB1F;
+			productRefGroup = A2937DDC1EE6BBC200A3EB1F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2937DDA1EE6BBC200A3EB1F /* Bull's Eye Game */,
+				A2937DF31EE6BBC200A3EB1F /* Bull's Eye GameTests */,
+				A2937DFE1EE6BBC200A3EB1F /* Bull's Eye GameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2937DD91EE6BBC200A3EB1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2937DEE1EE6BBC200A3EB1F /* LaunchScreen.storyboard in Resources */,
+				A2937DEB1EE6BBC200A3EB1F /* Assets.xcassets in Resources */,
+				A2937DE91EE6BBC200A3EB1F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DF21EE6BBC200A3EB1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DFD1EE6BBC200A3EB1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75AC6409B6838C63597C4967 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEF6F2BBEF1E66BACC1629E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F02517941E91694BA9E0AAEA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2937DD71EE6BBC200A3EB1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2937DE61EE6BBC200A3EB1F /* ViewController.m in Sources */,
+				A2937DE31EE6BBC200A3EB1F /* AppDelegate.m in Sources */,
+				A2937DE01EE6BBC200A3EB1F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DF01EE6BBC200A3EB1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2937DF91EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2937DFB1EE6BBC200A3EB1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2937E041EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A2937DF61EE6BBC200A3EB1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2937DDA1EE6BBC200A3EB1F /* Bull's Eye Game */;
+			targetProxy = A2937DF51EE6BBC200A3EB1F /* PBXContainerItemProxy */;
+		};
+		A2937E011EE6BBC200A3EB1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2937DDA1EE6BBC200A3EB1F /* Bull's Eye Game */;
+			targetProxy = A2937E001EE6BBC200A3EB1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A2937DE71EE6BBC200A3EB1F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2937DE81EE6BBC200A3EB1F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A2937DEC1EE6BBC200A3EB1F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2937DED1EE6BBC200A3EB1F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2937E061EE6BBC200A3EB1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2937E071EE6BBC200A3EB1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2937E091EE6BBC200A3EB1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C08B7EB958274672AC21BA94 /* Pods-Bull's Eye Game.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A2937E0A1EE6BBC200A3EB1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17F8D9F310200AD7F7017621 /* Pods-Bull's Eye Game.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A2937E0C1EE6BBC200A3EB1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Bull's Eye GameTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bull's Eye Game.app/Bull's Eye Game";
+			};
+			name = Debug;
+		};
+		A2937E0D1EE6BBC200A3EB1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Bull's Eye GameTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-GameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bull's Eye Game.app/Bull's Eye Game";
+			};
+			name = Release;
+		};
+		A2937E0F1EE6BBC200A3EB1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Bull's Eye GameUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-GameUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Bull's Eye Game";
+			};
+			name = Debug;
+		};
+		A2937E101EE6BBC200A3EB1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Bull's Eye GameUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-GameUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Bull's Eye Game";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2937DD61EE6BBC200A3EB1F /* Build configuration list for PBXProject "Bull's Eye Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2937E061EE6BBC200A3EB1F /* Debug */,
+				A2937E071EE6BBC200A3EB1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2937E081EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2937E091EE6BBC200A3EB1F /* Debug */,
+				A2937E0A1EE6BBC200A3EB1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A2937E0B1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2937E0C1EE6BBC200A3EB1F /* Debug */,
+				A2937E0D1EE6BBC200A3EB1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A2937E0E1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2937E0F1EE6BBC200A3EB1F /* Debug */,
+				A2937E101EE6BBC200A3EB1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A2937DD31EE6BBC200A3EB1F /* Project object */;
+}
