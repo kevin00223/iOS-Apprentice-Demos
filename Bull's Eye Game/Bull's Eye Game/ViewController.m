@@ -19,12 +19,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     [self setupUI];
     
 }
 
 - (void)setupUI
 {
+    //背景
+    UIImageView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Background"]];
+    [self.view addSubview:backgroundView];
+    [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    //hitme按钮
     UIButton *HitMeBtn = [[UIButton alloc]init];
     [HitMeBtn setTitle:@"Hit Me!" forState:UIControlStateNormal];
     [HitMeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -35,6 +44,8 @@
     [HitMeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
     }];
+    
+    
     
 }
 

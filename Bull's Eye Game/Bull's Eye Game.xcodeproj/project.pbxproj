@@ -15,6 +15,7 @@
 		A2937DEE1EE6BBC200A3EB1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2937DEC1EE6BBC200A3EB1F /* LaunchScreen.storyboard */; };
 		A2937DF91EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DF81EE6BBC200A3EB1F /* Bull_s_Eye_GameTests.m */; };
 		A2937E041EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937E031EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m */; };
+		A2937E121EE7A5C700A3EB1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2937E111EE7A5C700A3EB1F /* Images.xcassets */; };
 		F1F157B5FA92C0FAFB45730A /* libPods-Bull's Eye Game.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6DB6A3B4324EFF34C137AD /* libPods-Bull's Eye Game.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		A2937DFF1EE6BBC200A3EB1F /* Bull's Eye GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bull's Eye GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2937E031EE6BBC200A3EB1F /* Bull_s_Eye_GameUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_s_Eye_GameUITests.m; sourceTree = "<group>"; };
 		A2937E051EE6BBC200A3EB1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2937E111EE7A5C700A3EB1F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C08B7EB958274672AC21BA94 /* Pods-Bull's Eye Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bull's Eye Game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game.debug.xcconfig"; sourceTree = "<group>"; };
 		FC6DB6A3B4324EFF34C137AD /* libPods-Bull's Eye Game.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bull's Eye Game.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 				A2937DEA1EE6BBC200A3EB1F /* Assets.xcassets */,
 				A2937DEC1EE6BBC200A3EB1F /* LaunchScreen.storyboard */,
 				A2937DEF1EE6BBC200A3EB1F /* Info.plist */,
+				A2937E111EE7A5C700A3EB1F /* Images.xcassets */,
 				A2937DDE1EE6BBC200A3EB1F /* Supporting Files */,
 			);
 			path = "Bull's Eye Game";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2937DEE1EE6BBC200A3EB1F /* LaunchScreen.storyboard in Resources */,
+				A2937E121EE7A5C700A3EB1F /* Images.xcassets in Resources */,
 				A2937DEB1EE6BBC200A3EB1F /* Assets.xcassets in Resources */,
 				A2937DE91EE6BBC200A3EB1F /* Main.storyboard in Resources */,
 			);
@@ -502,6 +506,7 @@
 			baseConfigurationReference = C08B7EB958274672AC21BA94 /* Pods-Bull's Eye Game.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";
@@ -514,6 +519,7 @@
 			baseConfigurationReference = 17F8D9F310200AD7F7017621 /* Pods-Bull's Eye Game.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";
@@ -586,6 +592,7 @@
 				A2937E0A1EE6BBC200A3EB1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2937E0B1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameTests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +601,7 @@
 				A2937E0D1EE6BBC200A3EB1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2937E0E1EE6BBC200A3EB1F /* Build configuration list for PBXNativeTarget "Bull's Eye GameUITests" */ = {
 			isa = XCConfigurationList;
@@ -602,6 +610,7 @@
 				A2937E101EE6BBC200A3EB1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
