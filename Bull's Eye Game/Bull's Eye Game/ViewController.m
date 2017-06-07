@@ -45,8 +45,18 @@
         make.center.equalTo(self.view);
     }];
     
-    
-    
+    //按钮添加点击事件
+    [HitMeBtn addTarget:self action:@selector(btnSelected:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+//按钮点击事件
+- (void)btnSelected: (UIButton *)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:@"ios apprentice demo" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"点击了");
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
