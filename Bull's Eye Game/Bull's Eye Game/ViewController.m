@@ -10,9 +10,15 @@
 #import "Masonry.h"
 
 @interface ViewController ()
+{
+    int _currentValue;
+    int _round;
+}
 
 @property (nonatomic, weak)UILabel *scoreLabel;
 @property (nonatomic, weak)UILabel *roundLabel;
+@property (nonatomic, weak)UILabel *descLabel;
+@property (nonatomic, weak)UISlider *slider;
 
 @end
 
@@ -24,7 +30,7 @@
     
     
     [self setupUI];
-    
+    [self startNewRound];
 }
 
 - (void)setupUI
@@ -38,24 +44,27 @@
     
     //说明标签
     UILabel *descLabel = [[UILabel alloc]init];
-    descLabel.text = @"Put the Bull's Eye as Close as You Can to: 18";
     descLabel.textColor = [UIColor whiteColor];
+//    descLabel.text = [NSString stringWithFormat:@"Put the Bull's Eye as Close as You Can to: %d", arc4random() % 101];
     [self.view addSubview:descLabel];
     [descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.view).offset(50);
     }];
+    self.descLabel = descLabel;
     
     //slider
     UISlider *slider = [[UISlider alloc]init];
     slider.minimumValue = 0;
     slider.maximumValue = 100;
-    slider.value = 0;
+//    slider.value = 50;
     slider.continuous = NO;
     [slider setThumbImage:[UIImage imageNamed:@"SliderThumb-Normal"] forState:UIControlStateNormal];
     [slider setThumbImage:[UIImage imageNamed:@"SliderThumb-Highlighted"] forState:UIControlStateHighlighted];
     [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderTrackLeft"] forState:UIControlStateNormal];
     [slider setMaximumTrackImage:[UIImage imageNamed:@"SliderTrackRight"] forState:UIControlStateNormal];
+//    [slider setMinimumTrackTintColor:[UIColor redColor]];
+//    [slider setMaximumTrackTintColor:[UIColor blueColor]];
     [self.view addSubview:slider];
     [slider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
@@ -63,6 +72,7 @@
         make.width.offset(400);
     }];
     [slider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    self.slider = slider;
     
     //slider两侧的数字label
     UILabel *leftLabel = [[UILabel alloc]init];
@@ -141,7 +151,8 @@
     
     //roundLabel
     UILabel *roundLabel = [[UILabel alloc]init];
-    roundLabel.text = @"Round: 1";
+    _round = 1;
+    roundLabel.text = [NSString stringWithFormat:@"Round: %d", _round];
     roundLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:roundLabel];
     [roundLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,9 +165,12 @@
 //按钮点击事件
 - (void)btnSelected: (UIButton *)sender
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:@"ios apprentice demo" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:[NSString stringWithFormat:@"the value of the slider is %d", _currentValue] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"点击了");
+       // NSLog(@"点击了");
+        [self startNewRound];
+        self.roundLabel.text = [NSString stringWithFormat:@"Round: %d", 1+_round++];
+        
     }]];
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -164,14 +178,22 @@
 - (void)leftBtnSelected: (UIButton *)sender
 {
     self.scoreLabel.text = @"Score: 0";
+    _round = 1;
+    self.roundLabel.text = [NSString stringWithFormat:@"Round: %d",_round];
 }
 
 //slider滑动事件
 - (void)valueChanged: (UISlider *)sender
 {
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %f", sender.value];
+    _currentValue = (int)sender.value;
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)sender.value];
 }
 
+- (void)startNewRound
+{
+    self.descLabel.text = [NSString stringWithFormat:@"Put the Bull's Eye as Close as You Can to: %d", arc4random()%101];
+    self.slider.value = 50;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
