@@ -12,6 +12,8 @@
 @interface ViewController ()
 {
     int _currentValue;
+    int _targetValue;
+    int _differenceValue;
     int _round;
 }
 
@@ -165,10 +167,21 @@
 //按钮点击事件
 - (void)btnSelected: (UIButton *)sender
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:[NSString stringWithFormat:@"the value of the slider is %d", _currentValue] preferredStyle:UIAlertControllerStyleAlert];
+//    if (_targetValue > _currentValue){
+//        _differenceValue = _targetValue - _currentValue;
+//    }else if (_currentValue > _targetValue){
+//        _differenceValue = _currentValue - _targetValue;
+//    }else{
+//        _differenceValue = 0;
+//    }
+    
+    _differenceValue = abs(_targetValue - _currentValue);
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:[NSString stringWithFormat:@"the value of the slider is %d \nthe target value is %d \nand the difference is %d", _currentValue, _targetValue, _differenceValue] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        // NSLog(@"点击了");
         [self startNewRound];
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", 100-_differenceValue];
         self.roundLabel.text = [NSString stringWithFormat:@"Round: %d", 1+_round++];
         
     }]];
@@ -186,12 +199,13 @@
 - (void)valueChanged: (UISlider *)sender
 {
     _currentValue = (int)sender.value;
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)sender.value];
+    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", (int)sender.value];
 }
 
 - (void)startNewRound
 {
-    self.descLabel.text = [NSString stringWithFormat:@"Put the Bull's Eye as Close as You Can to: %d", arc4random()%101];
+    _targetValue = arc4random()%101;
+    self.descLabel.text = [NSString stringWithFormat:@"Put the Bull's Eye as Close as You Can to: %d", _targetValue];
     self.slider.value = 50;
 }
 
