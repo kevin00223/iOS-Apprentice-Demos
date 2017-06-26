@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A29165891F00B16D006A85BE /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = A29165881F00B16D006A85BE /* BullsEye.html */; };
+		A291658C1F00EAEF006A85BE /* InfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A291658B1F00EAEF006A85BE /* InfoVC.m */; };
 		A2937DE01EE6BBC200A3EB1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DDF1EE6BBC200A3EB1F /* main.m */; };
 		A2937DE31EE6BBC200A3EB1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DE21EE6BBC200A3EB1F /* AppDelegate.m */; };
 		A2937DE61EE6BBC200A3EB1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2937DE51EE6BBC200A3EB1F /* ViewController.m */; };
@@ -38,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		17F8D9F310200AD7F7017621 /* Pods-Bull's Eye Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bull's Eye Game.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bull's Eye Game/Pods-Bull's Eye Game.release.xcconfig"; sourceTree = "<group>"; };
+		A29165881F00B16D006A85BE /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = BullsEye.html; sourceTree = "<group>"; };
+		A291658A1F00EAEF006A85BE /* InfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoVC.h; sourceTree = "<group>"; };
+		A291658B1F00EAEF006A85BE /* InfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoVC.m; sourceTree = "<group>"; };
 		A2937DDB1EE6BBC200A3EB1F /* Bull's Eye Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull's Eye Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2937DDF1EE6BBC200A3EB1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2937DE11EE6BBC200A3EB1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		A2937DDD1EE6BBC200A3EB1F /* Bull's Eye Game */ = {
 			isa = PBXGroup;
 			children = (
+				A29165881F00B16D006A85BE /* BullsEye.html */,
 				A2937DE11EE6BBC200A3EB1F /* AppDelegate.h */,
 				A2937DE21EE6BBC200A3EB1F /* AppDelegate.m */,
 				A2937DE41EE6BBC200A3EB1F /* ViewController.h */,
@@ -137,6 +143,8 @@
 				A2937DEF1EE6BBC200A3EB1F /* Info.plist */,
 				A2937E111EE7A5C700A3EB1F /* Images.xcassets */,
 				A2937DDE1EE6BBC200A3EB1F /* Supporting Files */,
+				A291658A1F00EAEF006A85BE /* InfoVC.h */,
+				A291658B1F00EAEF006A85BE /* InfoVC.m */,
 			);
 			path = "Bull's Eye Game";
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 				TargetAttributes = {
 					A2937DDA1EE6BBC200A3EB1F = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = WK2L34NH49;
 						ProvisioningStyle = Automatic;
 					};
 					A2937DF31EE6BBC200A3EB1F = {
@@ -280,6 +289,7 @@
 				A2937E121EE7A5C700A3EB1F /* Images.xcassets in Resources */,
 				A2937DEB1EE6BBC200A3EB1F /* Assets.xcassets in Resources */,
 				A2937DE91EE6BBC200A3EB1F /* Main.storyboard in Resources */,
+				A29165891F00B16D006A85BE /* BullsEye.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A291658C1F00EAEF006A85BE /* InfoVC.m in Sources */,
 				A2937DE61EE6BBC200A3EB1F /* ViewController.m in Sources */,
 				A2937DE31EE6BBC200A3EB1F /* AppDelegate.m in Sources */,
 				A2937DE01EE6BBC200A3EB1F /* main.m in Sources */,
@@ -507,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				DEVELOPMENT_TEAM = WK2L34NH49;
 				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";
@@ -520,6 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				DEVELOPMENT_TEAM = WK2L34NH49;
 				INFOPLIST_FILE = "Bull's Eye Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.Bull-s-Eye-Game";

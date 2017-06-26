@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Masonry.h"
+#import "InfoVC.h"
 
 @interface ViewController ()
 {
@@ -21,6 +22,9 @@
 @property (nonatomic, weak)UILabel *roundLabel;
 @property (nonatomic, weak)UILabel *descLabel;
 @property (nonatomic, weak)UISlider *slider;
+@property (nonatomic, weak)UITextView *infoView;
+@property (nonatomic, weak)UIButton *closeBtn;
+@property (nonatomic, strong)UIWebView *aboutWebView;
 
 @end
 
@@ -29,7 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     
     [self setupUI];
     [self startNewRound];
@@ -63,8 +66,11 @@
     slider.continuous = NO;
     [slider setThumbImage:[UIImage imageNamed:@"SliderThumb-Normal"] forState:UIControlStateNormal];
     [slider setThumbImage:[UIImage imageNamed:@"SliderThumb-Highlighted"] forState:UIControlStateHighlighted];
-    [slider setMinimumTrackImage:[UIImage imageNamed:@"SliderTrackLeft"] forState:UIControlStateNormal];
-    [slider setMaximumTrackImage:[UIImage imageNamed:@"SliderTrackRight"] forState:UIControlStateNormal];
+    
+    UIImage *leftTrackImage = [[UIImage imageNamed:@"SliderTrackLeft"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
+    [slider setMinimumTrackImage:leftTrackImage forState:UIControlStateNormal];
+    UIImage *rightTrackImage = [[UIImage imageNamed:@"SliderTrackRight"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
+    [slider setMaximumTrackImage:rightTrackImage forState:UIControlStateNormal];
 //    [slider setMinimumTrackTintColor:[UIColor redColor]];
 //    [slider setMaximumTrackTintColor:[UIColor blueColor]];
     [self.view addSubview:slider];
@@ -139,6 +145,7 @@
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(infoBtn);
     }];
+    [rightBtn addTarget:self action:@selector(infoBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     //scoreLabel
     UILabel *scoreLabel = [[UILabel alloc]init];
@@ -176,8 +183,23 @@
 //    }
     
     _differenceValue = abs(_targetValue - _currentValue);
+    //10分 bravo
+    //20分 very good  you almost had it
+    //30分 good   not even close...
+    //40分
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hello World" message:[NSString stringWithFormat:@"the value of the slider is %d \nthe target value is %d \nand the difference is %d", _currentValue, _targetValue, _differenceValue] preferredStyle:UIAlertControllerStyleAlert];
+    NSString *alertTitle;
+    if (_differenceValue == 0){
+        alertTitle = @"Bravo!";
+    }else if(_differenceValue < 5){
+        alertTitle = @"You almost had it!";
+    }else if(_differenceValue < 10){
+        alertTitle = @"Pretty good!";
+    }else{
+        alertTitle = @"Not even close...";
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle message:[NSString stringWithFormat:@"the value of the slider is %d \nthe target value is %d \nand the difference is %d", _currentValue, _targetValue, _differenceValue] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
        // NSLog(@"点击了");
         [self startNewRound];
@@ -186,6 +208,12 @@
         
     }]];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)infoBtnClicked: (UIButton *)sender{
+    
+    InfoVC *infoVC = [[InfoVC alloc]init];
+    [self presentViewController:infoVC animated:YES completion:nil];
 }
 
 - (void)leftBtnSelected: (UIButton *)sender
@@ -209,9 +237,9 @@
     self.slider.value = 50;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 
