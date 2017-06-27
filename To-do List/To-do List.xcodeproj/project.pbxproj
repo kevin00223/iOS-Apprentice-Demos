@@ -234,6 +234,7 @@
 				TargetAttributes = {
 					A2065A7D1F010F6900C4A08F = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = WK2L34NH49;
 						ProvisioningStyle = Automatic;
 					};
 					A2065A961F010F6900C4A08F = {
@@ -502,6 +503,8 @@
 			baseConfigurationReference = 9C2F9817239C7CB608F5DCE1 /* Pods-To-do List.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = WK2L34NH49;
 				INFOPLIST_FILE = "To-do List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.To-do-List";
@@ -514,6 +517,8 @@
 			baseConfigurationReference = CFE6332B2B90FAB37F26527C /* Pods-To-do List.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = WK2L34NH49;
 				INFOPLIST_FILE = "To-do List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yinbake.To-do-List";
@@ -586,6 +591,7 @@
 				A2065AAD1F010F6900C4A08F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2065AAE1F010F6900C4A08F /* Build configuration list for PBXNativeTarget "To-do ListTests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +600,7 @@
 				A2065AB01F010F6900C4A08F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2065AB11F010F6900C4A08F /* Build configuration list for PBXNativeTarget "To-do ListUITests" */ = {
 			isa = XCConfigurationList;
@@ -602,6 +609,7 @@
 				A2065AB31F010F6900C4A08F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
