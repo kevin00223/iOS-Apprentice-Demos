@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LKNavigationController.h"
+#import "LKCheckListTableVC.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:[[NSClassFromString(@"LKCheckListTableVC") alloc]init]];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
