@@ -8,13 +8,13 @@
 
 #import "LKCheckListTableVC.h"
 #import "LKChecklistModel.h"
-#import "LKAddItemVC.h"
+#import "LKItemDetailVC.h"
 #import "LKNavigationController.h"
 #import "LKCheckListCell.h"
 
 static NSString *cellID = @"cellID";
 
-@interface LKCheckListTableVC () <LKAddItemVCDelegate>
+@interface LKCheckListTableVC () <LKItemDetailVCDelegate>
 {
     NSMutableArray *_mArr;
     //是否显示左侧checkmark的bool值
@@ -33,7 +33,7 @@ static NSString *cellID = @"cellID";
     
     _mArr = [self loadData];
     
-    //注册单元格哥哥哥哥
+    //注册单元格
     [self.tableView registerNib:[UINib nibWithNibName:@"LKCheckListCell" bundle:nil] forCellReuseIdentifier:cellID];
 }
 

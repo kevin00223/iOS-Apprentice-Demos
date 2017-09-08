@@ -6,11 +6,11 @@
 //  Copyright © 2017年 yinbake. All rights reserved.
 //
 
-#import "LKAddItemVC.h"
+#import "LKItemDetailVC.h"
 #import "masonry.h"
 #import "LKNavigationController.h"
 
-@interface LKAddItemVC () <UITextFieldDelegate>
+@interface LKItemDetailVC () <UITextFieldDelegate>
 {
     UITextField *_textField;
     UIBarButtonItem *_itemRight;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation LKAddItemVC
+@implementation LKItemDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
