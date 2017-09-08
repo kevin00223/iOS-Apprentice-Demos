@@ -33,7 +33,7 @@ static NSString *cellID = @"cellID";
     
     _mArr = [self loadData];
     
-    //注册单元格
+    //注册单元格哥哥哥哥
     [self.tableView registerNib:[UINib nibWithNibName:@"LKCheckListCell" bundle:nil] forCellReuseIdentifier:cellID];
 }
 
