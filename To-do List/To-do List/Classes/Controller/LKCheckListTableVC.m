@@ -119,20 +119,20 @@ static NSString *cellID = @"cellID";
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    LKAddItemVC *addItemVC = [[LKAddItemVC alloc]initWithStyle:UITableViewStyleGrouped];
-    addItemVC.delegate = self;
-    addItemVC.itemToEdit = _mArr[indexPath.row];
-    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:addItemVC];
+    LKItemDetailVC *itemDetailVC = [[LKItemDetailVC alloc]initWithStyle:UITableViewStyleGrouped];
+    itemDetailVC.delegate = self;
+    itemDetailVC.itemToEdit = _mArr[indexPath.row];
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:itemDetailVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mark - LKAddItemDelegate
-- (void)addItemVCDidCancel:(LKAddItemVC *)addItemVC
+#pragma mark - LKItemDetailVCDelegate
+- (void)itemDetailVCDidCancel:(LKItemDetailVC *)itemDetailVC
 {
-    [addItemVC dismissViewControllerAnimated:YES completion:nil];
+    [itemDetailVC dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)additemVC:(LKAddItemVC *)addItemVC didFinishAddingItem:(LKChecklistModel *)item
+- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishAddingItem:(LKChecklistModel *)item
 {
     NSInteger newRowIndex = [_mArr count];
     [_mArr addObject:item];
@@ -140,7 +140,7 @@ static NSString *cellID = @"cellID";
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)additemVC:(LKAddItemVC *)addItemVC didFinishEditingItem:(LKChecklistModel *)item
+- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishEditingItem:(LKChecklistModel *)item
 {
     NSInteger index = [_mArr indexOfObject:item];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -151,9 +151,9 @@ static NSString *cellID = @"cellID";
 //点击事件
 - (void)addBtncClicked: (UIBarButtonItem *)sender
 {
-    LKAddItemVC *addItemVC = [[LKAddItemVC alloc]initWithStyle:UITableViewStyleGrouped];
-    addItemVC.delegate = self;
-    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:addItemVC];
+    LKItemDetailVC *itemDetailVC = [[LKItemDetailVC alloc]initWithStyle:UITableViewStyleGrouped];
+    itemDetailVC.delegate = self;
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:itemDetailVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

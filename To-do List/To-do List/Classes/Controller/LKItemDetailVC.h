@@ -1,5 +1,5 @@
 //
-//  LKAddItemVC.h
+//  LKitemDetailVC.h
 //  To-do List
 //
 //  Created by likai on 2017/8/3.
@@ -14,9 +14,9 @@
 
 @protocol LKItemDetailVCDelegate <NSObject>
 
-- (void)addItemVCDidCancel:(LKItemDetailVC *)addItemVC;
-- (void)additemVC: (LKItemDetailVC *)addItemVC didFinishAddingItem: (LKChecklistModel *)item;
-- (void)additemVC: (LKItemDetailVC *)addItemVC didFinishEditingItem: (LKChecklistModel *)item;
+- (void)itemDetailVCDidCancel:(LKItemDetailVC *)itemDetailVC;
+- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishAddingItem: (LKChecklistModel *)item;
+- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishEditingItem: (LKChecklistModel *)item;
 
 @end
 

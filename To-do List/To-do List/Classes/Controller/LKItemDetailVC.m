@@ -1,5 +1,5 @@
 //
-//  LKAddItemVC.m
+//  LKitemDetailVC.m
 //  To-do List
 //
 //  Created by likai on 2017/8/3.
@@ -71,8 +71,8 @@
 
 - (void)checklistsBtnClicked: (UIBarButtonItem *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(addItemVCDidCancel:)]) {
-        [self.delegate addItemVCDidCancel:self];
+    if ([self.delegate respondsToSelector:@selector(itemDetailVCDidCancel:)]) {
+        [self.delegate itemDetailVCDidCancel:self];
     }
 }
 
@@ -83,12 +83,12 @@
     
     if ([self.title isEqualToString:@"Edit Item"]) {
         self.itemToEdit.text = _textField.text;
-        if ([self.delegate respondsToSelector:@selector(additemVC:didFinishEditingItem:)]) {
-            [self.delegate additemVC:self didFinishEditingItem:self.itemToEdit];
+        if ([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishEditingItem:)]) {
+            [self.delegate itemDetailVC:self didFinishEditingItem:self.itemToEdit];
         }
     }else{
-        if([self.delegate respondsToSelector:@selector(additemVC:didFinishAddingItem:)]){
-            [self.delegate additemVC:self didFinishAddingItem:model];
+        if([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishAddingItem:)]){
+            [self.delegate itemDetailVC:self didFinishAddingItem:model];
         }
     }
 
