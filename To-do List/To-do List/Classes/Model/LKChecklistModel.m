@@ -17,4 +17,21 @@
 //    return model;
 //}
 
+//保存数据
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.text forKey:@"Text"];
+    [aCoder encodeBool:self.show forKey:@"Show"];
+}
+
+//获取数据
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if(self = [super init]) {
+        self.text = [aDecoder decodeObjectForKey:@"Text"];
+        self.show = [aDecoder decodeBoolForKey:@"Show"];
+    }
+    return self;
+}
+
 @end

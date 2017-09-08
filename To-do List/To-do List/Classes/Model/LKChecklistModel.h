@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LKChecklistModel : NSObject
+@interface LKChecklistModel : NSObject <NSCoding>
 
 @property (nonatomic, copy)NSString *text;
 //@property (nonatomic, copy)NSString *image;

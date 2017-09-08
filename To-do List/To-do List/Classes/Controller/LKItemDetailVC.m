@@ -42,8 +42,6 @@
         _itemRight.enabled = NO;
     }
     
-    
-    
     //注册单元格
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     //设置代理
