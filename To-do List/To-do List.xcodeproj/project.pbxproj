@@ -10,7 +10,6 @@
 		73FEE7219BC74AFBB57F5007 /* libPods-To-do List.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D98D5C6D7CAD0E3E50D369 /* libPods-To-do List.a */; };
 		A2065A831F010F6900C4A08F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2065A821F010F6900C4A08F /* main.m */; };
 		A2065A861F010F6900C4A08F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2065A851F010F6900C4A08F /* AppDelegate.m */; };
-		A2065A8C1F010F6900C4A08F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2065A8A1F010F6900C4A08F /* Main.storyboard */; };
 		A2065A8E1F010F6900C4A08F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2065A8D1F010F6900C4A08F /* Assets.xcassets */; };
 		A2065A911F010F6900C4A08F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2065A8F1F010F6900C4A08F /* LaunchScreen.storyboard */; };
 		A2065A9C1F010F6900C4A08F /* To_do_ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2065A9B1F010F6900C4A08F /* To_do_ListTests.m */; };
@@ -19,6 +18,9 @@
 		A20BE0C31F024EE200149D56 /* LKCheckListTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A20BE0BE1F024EE200149D56 /* LKCheckListTableVC.m */; };
 		A20BE0C41F024EE200149D56 /* CheckListPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20BE0C11F024EE200149D56 /* CheckListPlist.plist */; };
 		A20BE0C71F024F1F00149D56 /* LKChecklistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20BE0C61F024F1F00149D56 /* LKChecklistModel.m */; };
+		A2413B521F61339900A45CF0 /* LKCheckListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2413B501F61339900A45CF0 /* LKCheckListCell.m */; };
+		A2413B531F61339900A45CF0 /* LKCheckListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2413B511F61339900A45CF0 /* LKCheckListCell.xib */; };
+		A261B32B1F330D8F009F75F8 /* LKAddItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A261B32A1F330D8F009F75F8 /* LKAddItemVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +47,6 @@
 		A2065A821F010F6900C4A08F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2065A841F010F6900C4A08F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2065A851F010F6900C4A08F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A2065A8B1F010F6900C4A08F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2065A8D1F010F6900C4A08F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2065A901F010F6900C4A08F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2065A921F010F6900C4A08F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +63,11 @@
 		A20BE0C11F024EE200149D56 /* CheckListPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CheckListPlist.plist; sourceTree = "<group>"; };
 		A20BE0C51F024F1F00149D56 /* LKChecklistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKChecklistModel.h; sourceTree = "<group>"; };
 		A20BE0C61F024F1F00149D56 /* LKChecklistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKChecklistModel.m; sourceTree = "<group>"; };
+		A2413B4F1F61339900A45CF0 /* LKCheckListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCheckListCell.h; sourceTree = "<group>"; };
+		A2413B501F61339900A45CF0 /* LKCheckListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCheckListCell.m; sourceTree = "<group>"; };
+		A2413B511F61339900A45CF0 /* LKCheckListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LKCheckListCell.xib; sourceTree = "<group>"; };
+		A261B3291F330D8F009F75F8 /* LKAddItemVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAddItemVC.h; sourceTree = "<group>"; };
+		A261B32A1F330D8F009F75F8 /* LKAddItemVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAddItemVC.m; sourceTree = "<group>"; };
 		CFE6332B2B90FAB37F26527C /* Pods-To-do List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-do List.release.xcconfig"; path = "Pods/Target Support Files/Pods-To-do List/Pods-To-do List.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +134,6 @@
 				A20BE0B21F02068300149D56 /* Classes */,
 				A2065A841F010F6900C4A08F /* AppDelegate.h */,
 				A2065A851F010F6900C4A08F /* AppDelegate.m */,
-				A2065A8A1F010F6900C4A08F /* Main.storyboard */,
 				A2065A8D1F010F6900C4A08F /* Assets.xcassets */,
 				A2065A8F1F010F6900C4A08F /* LaunchScreen.storyboard */,
 				A2065A921F010F6900C4A08F /* Info.plist */,
@@ -189,6 +194,8 @@
 			children = (
 				A20BE0BD1F024EE200149D56 /* LKCheckListTableVC.h */,
 				A20BE0BE1F024EE200149D56 /* LKCheckListTableVC.m */,
+				A261B3291F330D8F009F75F8 /* LKAddItemVC.h */,
+				A261B32A1F330D8F009F75F8 /* LKAddItemVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,6 +220,9 @@
 		A20BE0C21F024EE200149D56 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A2413B4F1F61339900A45CF0 /* LKCheckListCell.h */,
+				A2413B501F61339900A45CF0 /* LKCheckListCell.m */,
+				A2413B511F61339900A45CF0 /* LKCheckListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,9 +347,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20BE0C41F024EE200149D56 /* CheckListPlist.plist in Resources */,
+				A2413B531F61339900A45CF0 /* LKCheckListCell.xib in Resources */,
 				A2065A911F010F6900C4A08F /* LaunchScreen.storyboard in Resources */,
 				A2065A8E1F010F6900C4A08F /* Assets.xcassets in Resources */,
-				A2065A8C1F010F6900C4A08F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,8 +422,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2413B521F61339900A45CF0 /* LKCheckListCell.m in Sources */,
 				A2065A861F010F6900C4A08F /* AppDelegate.m in Sources */,
 				A2065A831F010F6900C4A08F /* main.m in Sources */,
+				A261B32B1F330D8F009F75F8 /* LKAddItemVC.m in Sources */,
 				A20BE0C71F024F1F00149D56 /* LKChecklistModel.m in Sources */,
 				A20BE0C31F024EE200149D56 /* LKCheckListTableVC.m in Sources */,
 				A20BE0B91F020C9400149D56 /* LKNavigationController.m in Sources */,
@@ -452,14 +464,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A2065A8A1F010F6900C4A08F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2065A8B1F010F6900C4A08F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A2065A8F1F010F6900C4A08F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

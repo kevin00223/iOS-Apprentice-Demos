@@ -7,6 +7,8 @@
 //
 
 #import "LKNavigationController.h"
+#import "LKCheckListTableVC.h"
+#import "LKAddItemVC.h"
 
 @interface LKNavigationController ()
 

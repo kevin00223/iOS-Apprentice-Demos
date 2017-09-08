@@ -11,8 +11,9 @@
 @interface LKChecklistModel : NSObject
 
 @property (nonatomic, copy)NSString *text;
-@property (nonatomic, copy)NSString *image;
+//@property (nonatomic, copy)NSString *image;
+@property (nonatomic, assign)BOOL show;
 
-+ (instancetype) checklistWithDict: (NSDictionary *)dict;
+//+ (instancetype) checklistWithDict: (NSDictionary *)dict;
 
 @end

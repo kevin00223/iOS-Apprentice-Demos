@@ -10,11 +10,11 @@
 
 @implementation LKChecklistModel
 
-+ (instancetype)checklistWithDict:(NSDictionary *)dict
-{
-    LKChecklistModel *model = [[LKChecklistModel alloc]init];
-    [model setValuesForKeysWithDictionary:dict];
-    return model;
-}
+//+ (instancetype)checklistWithDict:(NSDictionary *)dict
+//{
+//    LKChecklistModel *model = [[LKChecklistModel alloc]init];
+//    [model setValuesForKeysWithDictionary:dict];
+//    return model;
+//}
 
 @end

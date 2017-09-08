@@ -21,7 +21,8 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:[[NSClassFromString(@"LKCheckListTableVC") alloc]init]];
+    LKCheckListTableVC *checkListVC = [[LKCheckListTableVC alloc]init];
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:checkListVC];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
