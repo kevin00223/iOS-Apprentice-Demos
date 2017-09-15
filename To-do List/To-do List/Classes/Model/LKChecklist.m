@@ -10,4 +10,17 @@
 
 @implementation LKChecklist
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.name forKey:@"Name"];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"Name"];
+    }
+    return self;
+}
+
 @end

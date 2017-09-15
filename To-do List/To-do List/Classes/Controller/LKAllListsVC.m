@@ -42,24 +42,34 @@ static NSString *cellID = @"cellID";
 //加载数据
 - (void)loadChecklists
 {
-    _lists = [NSMutableArray array];
-    LKChecklist *list;
-    
-    list = [[LKChecklist alloc]init];
-    list.name = @"Birthdays";
-    [_lists addObject:list];
-    
-    list = [[LKChecklist alloc]init];
-    list.name = @"Groceries";
-    [_lists addObject:list];
-    
-    list = [[LKChecklist alloc]init];
-    list.name = @"Cool Apps";
-    [_lists addObject:list];
-    
-    list = [[LKChecklist alloc]init];
-    list.name = @"To Do";
-    [_lists addObject:list];
+    NSString *path = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+//        NSData *data = [NSData dataWithContentsOfFile:path];
+//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+//        _lists = [unarchiver decodeObjectForKey:@"AllLists"];
+//        [unarchiver finishDecoding];
+        _lists = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+    }else{
+        _lists = [NSMutableArray array];
+        LKChecklist *list;
+        
+        list = [[LKChecklist alloc]init];
+        list.name = @"Birthdays";
+        [_lists addObject:list];
+        
+        list = [[LKChecklist alloc]init];
+        list.name = @"Groceries";
+        [_lists addObject:list];
+        
+        list = [[LKChecklist alloc]init];
+        list.name = @"Cool Apps";
+        [_lists addObject:list];
+        
+        list = [[LKChecklist alloc]init];
+        list.name = @"To Do";
+        [_lists addObject:list];
+    }
 }
 
 #pragma mark - Table view data source
@@ -89,6 +99,9 @@ static NSString *cellID = @"cellID";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_lists removeObject:_lists[indexPath.row]];
+    //保存数据
+//    [self saveDataToFile];
+    [self saveData:_lists];
     NSArray *indexpaths = @[indexPath];
     [tableView deleteRowsAtIndexPaths:indexpaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -97,6 +110,9 @@ static NSString *cellID = @"cellID";
 - (void)listDetail:(LKListDetailVC *)listDetail didEditList:(LKChecklist *)list
 {
     NSInteger index = [_lists indexOfObject:list];
+    //保存数据
+//    [self saveDataToFile];
+    [self saveData:_lists];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.text = list.name;
@@ -106,6 +122,9 @@ static NSString *cellID = @"cellID";
 {
     NSInteger index = [_lists count];
     [_lists addObject:list];
+    //保存数据
+//    [self saveDataToFile];
+    [self saveData:_lists];
     NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     NSArray *indexPaths = @[newIndexPath];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -136,6 +155,35 @@ static NSString *cellID = @"cellID";
     self.title = @"All Lists";
     UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(itemRightClicked:)];
     self.navigationItem.rightBarButtonItem = itemRight;
+}
+
+#pragma mark - data saving
+- (NSString *)documentDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths firstObject];
+    return documentPath;
+}
+
+- (NSString *)dataFilePath
+{
+    NSString *documentPath = [self documentDirectory];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"AllLists.plist"];
+    return filePath;
+}
+
+- (void)saveDataToFile
+{
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+    [archiver encodeObject:_lists forKey:@"AllLists"];
+    [archiver finishEncoding];
+    [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+- (void)saveData: (id)data
+{
+    [NSKeyedArchiver archiveRootObject:data toFile:[self dataFilePath]];
 }
 
 @end

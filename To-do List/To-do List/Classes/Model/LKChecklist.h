@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LKChecklist : NSObject
+@interface LKChecklist : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *name;
 

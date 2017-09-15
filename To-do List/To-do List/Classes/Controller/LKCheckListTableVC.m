@@ -246,6 +246,7 @@ static NSString *cellID = @"cellID";
     [data writeToFile:[self dataFilePath] atomically:YES];
 }
 
+#pragma mark - life cycle
 - (void)viewWillAppear:(BOOL)animated
 {
     self.title = self.checklist.name;
