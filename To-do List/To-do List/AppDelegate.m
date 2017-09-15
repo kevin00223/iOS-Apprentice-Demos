@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LKNavigationController.h"
 #import "LKCheckListTableVC.h"
+#import "LKAllListsVC.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +22,9 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    LKCheckListTableVC *checkListVC = [[LKCheckListTableVC alloc]init];
-    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:checkListVC];
+//    LKCheckListTableVC *checkListVC = [[LKCheckListTableVC alloc]init];
+    LKAllListsVC *vc = [[LKAllListsVC alloc]init];
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:vc];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     

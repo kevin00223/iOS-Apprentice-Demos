@@ -7,7 +7,7 @@
 //
 
 #import "LKCheckListTableVC.h"
-#import "LKChecklistModel.h"
+#import "LKChecklistItem.h"
 #import "LKItemDetailVC.h"
 #import "LKNavigationController.h"
 #import "LKCheckListCell.h"
@@ -51,25 +51,25 @@ static NSString *cellID = @"cellID";
     }else{
         _mArr = [NSMutableArray array];
         
-        LKChecklistModel *item;
+        LKChecklistItem *item;
         
-        item = [[LKChecklistModel alloc] init];
+        item = [[LKChecklistItem alloc] init];
         item.text = @"Walk the dog";
         [_mArr addObject:item];
         
-        item = [[LKChecklistModel alloc] init];
+        item = [[LKChecklistItem alloc] init];
         item.text = @"Brush my teeth";
         [_mArr addObject:item];
         
-        item = [[LKChecklistModel alloc] init];
+        item = [[LKChecklistItem alloc] init];
         item.text = @"Learn iOS development";
         [_mArr addObject:item];
         
-        item = [[LKChecklistModel alloc] init];
+        item = [[LKChecklistItem alloc] init];
         item.text = @"Soccer practice";
         [_mArr addObject:item];
         
-        item = [[LKChecklistModel alloc] init];
+        item = [[LKChecklistItem alloc] init];
         item.text = @"Eat ice cream";
         [_mArr addObject:item];
     }
@@ -92,30 +92,30 @@ static NSString *cellID = @"cellID";
 //    NSArray *plistArr = [[NSArray alloc]initWithContentsOfFile:plistPath];
 //    NSMutableArray *mArr = [NSMutableArray array];
 //    for (NSDictionary *dict in plistArr) {
-//        [mArr addObject:[LKChecklistModel checklistWithDict:dict]];
+//        [mArr addObject:[LKChecklistItem checklistWithDict:dict]];
 //    }
 //    
 //    NSMutableArray *mArr = [NSMutableArray array];
 //    
-//    LKChecklistModel *item;
+//    LKChecklistItem *item;
 //    
-//    item = [[LKChecklistModel alloc] init];
+//    item = [[LKChecklistItem alloc] init];
 //    item.text = @"Walk the dog";
 //    [mArr addObject:item];
 //    
-//    item = [[LKChecklistModel alloc] init];
+//    item = [[LKChecklistItem alloc] init];
 //    item.text = @"Brush my teeth";
 //    [mArr addObject:item];
 //    
-//    item = [[LKChecklistModel alloc] init];
+//    item = [[LKChecklistItem alloc] init];
 //    item.text = @"Learn iOS development";
 //    [mArr addObject:item];
 //    
-//    item = [[LKChecklistModel alloc] init];
+//    item = [[LKChecklistItem alloc] init];
 //    item.text = @"Soccer practice";
 //    [mArr addObject:item];
 //    
-//    item = [[LKChecklistModel alloc] init];
+//    item = [[LKChecklistItem alloc] init];
 //    item.text = @"Eat ice cream";
 //    [mArr addObject:item];
 //    
@@ -135,7 +135,7 @@ static NSString *cellID = @"cellID";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
-    LKChecklistModel *model = _mArr[indexPath.row];
+    LKChecklistItem *model = _mArr[indexPath.row];
     if ([model isKindOfClass:[NSString class]]) {
         cell.projectLabel.text = (NSString *)model;
     }else{
@@ -151,7 +151,7 @@ static NSString *cellID = @"cellID";
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     LKCheckListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    LKChecklistModel *model = _mArr[indexPath.row];
+    LKChecklistItem *model = _mArr[indexPath.row];
 
     if (!model.show){
         //显示
@@ -181,7 +181,7 @@ static NSString *cellID = @"cellID";
     [itemDetailVC dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishAddingItem:(LKChecklistModel *)item
+- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishAddingItem:(LKChecklistItem *)item
 {
     NSInteger newRowIndex = [_mArr count];
     [_mArr addObject:item];
@@ -191,7 +191,7 @@ static NSString *cellID = @"cellID";
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishEditingItem:(LKChecklistModel *)item
+- (void)itemDetailVC:(LKItemDetailVC *)itemDetailVC didFinishEditingItem:(LKChecklistItem *)item
 {
     NSInteger index = [_mArr indexOfObject:item];
     //数据保存到沙盒
@@ -220,17 +220,6 @@ static NSString *cellID = @"cellID";
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.title = @"CheckLists";
-    UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtncClicked:)];
-//    self.navigationController.navigationItem.rightBarButtonItem = itemRight; //不要用navigationController去调navigationItem
-    self.navigationItem.rightBarButtonItem = itemRight;
-    
-    //重新刷新数据
-    [self.tableView reloadData];
-}
-
 #pragma mark - data saving
 //创建沙盒目录
 - (NSString *)documentsDirectory
@@ -255,6 +244,17 @@ static NSString *cellID = @"cellID";
     [archiver encodeObject:_mArr forKey:@"ChecklistItems"]; //_mArr存的是model, 因此需要让model遵守NSCoding协议 实现对应方法
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.title = self.checklist.name;
+    UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBtncClicked:)];
+    //    self.navigationController.navigationItem.rightBarButtonItem = itemRight; //不要用navigationController去调navigationItem
+    self.navigationItem.rightBarButtonItem = itemRight;
+    
+    //重新刷新数据
+    [self.tableView reloadData];
 }
 
 

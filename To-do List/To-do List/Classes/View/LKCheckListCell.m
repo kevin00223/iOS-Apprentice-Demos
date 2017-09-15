@@ -7,7 +7,7 @@
 //
 
 #import "LKCheckListCell.h"
-#import "LKChecklistModel.h"
+#import "LKChecklistItem.h"
 
 @interface LKCheckListCell ()
 

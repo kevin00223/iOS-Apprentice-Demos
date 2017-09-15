@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LKChecklist.h"
+@class LKListDetailVC;
+
+@protocol LKListDetailDelegate <NSObject>
+
+- (void)listDetail: (LKListDetailVC *)listDetail didEditList: (LKChecklist *)list;
+- (void)listDetail: (LKListDetailVC *)listDetail didAddList: (LKChecklist *)list;
+
+@end
 
 @interface LKListDetailVC : UITableViewController
+
+@property (nonatomic, strong) LKChecklist *listToEidt;
+@property (nonatomic, weak) id<LKListDetailDelegate> delegate;
 
 @end

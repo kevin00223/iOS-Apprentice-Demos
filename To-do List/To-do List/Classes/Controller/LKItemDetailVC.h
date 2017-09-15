@@ -7,22 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LKChecklistModel.h"
+#import "LKChecklistItem.h"
 
 @class LKItemDetailVC;
-@class LKChecklistModel;
+@class LKChecklistItem;
 
 @protocol LKItemDetailVCDelegate <NSObject>
 
 - (void)itemDetailVCDidCancel:(LKItemDetailVC *)itemDetailVC;
-- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishAddingItem: (LKChecklistModel *)item;
-- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishEditingItem: (LKChecklistModel *)item;
+- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishAddingItem: (LKChecklistItem *)item;
+- (void)itemDetailVC: (LKItemDetailVC *)itemDetailVC didFinishEditingItem: (LKChecklistItem *)item;
 
 @end
 
 @interface LKItemDetailVC : UITableViewController
 
 @property (nonatomic, weak) id <LKItemDetailVCDelegate> delegate;
-@property (nonatomic, strong) LKChecklistModel *itemToEdit;
+@property (nonatomic, strong) LKChecklistItem *itemToEdit;
 
 @end

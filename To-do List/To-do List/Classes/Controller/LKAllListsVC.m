@@ -7,92 +7,135 @@
 //
 
 #import "LKAllListsVC.h"
+#import "LKCheckListTableVC.h"
+#import "LKChecklist.h"
+#import "LKListDetailVC.h"
+#import "LKNavigationController.h"
 
-@interface LKAllListsVC ()
+static NSString *cellID = @"cellID";
+
+@interface LKAllListsVC () <LKListDetailDelegate>
+{
+    NSMutableArray *_lists;
+}
 
 @end
 
-@implementation LKAllListsVC
+@implementation LKAllListsVC 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //注册单元格
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:UITableViewStylePlain];
+    if (self) {
+        [self loadChecklists];
+    }
+    return self;
+}
+
+//加载数据
+- (void)loadChecklists
+{
+    _lists = [NSMutableArray array];
+    LKChecklist *list;
+    
+    list = [[LKChecklist alloc]init];
+    list.name = @"Birthdays";
+    [_lists addObject:list];
+    
+    list = [[LKChecklist alloc]init];
+    list.name = @"Groceries";
+    [_lists addObject:list];
+    
+    list = [[LKChecklist alloc]init];
+    list.name = @"Cool Apps";
+    [_lists addObject:list];
+    
+    list = [[LKChecklist alloc]init];
+    list.name = @"To Do";
+    [_lists addObject:list];
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return _lists.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    LKChecklist *list = _lists[indexPath.row];
+    cell.textLabel.text = list.name;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    LKCheckListTableVC *vc = [[LKCheckListTableVC alloc]init];
+    LKChecklist *model = _lists[indexPath.row];
+    vc.checklist = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_lists removeObject:_lists[indexPath.row]];
+    NSArray *indexpaths = @[indexPath];
+    [tableView deleteRowsAtIndexPaths:indexpaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+#pragma mark - LKListDetailDelegate
+- (void)listDetail:(LKListDetailVC *)listDetail didEditList:(LKChecklist *)list
+{
+    NSInteger index = [_lists indexOfObject:list];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.text = list.name;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)listDetail:(LKListDetailVC *)listDetail didAddList:(LKChecklist *)list
+{
+    NSInteger index = [_lists count];
+    [_lists addObject:list];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    NSArray *indexPaths = @[newIndexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
-*/
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - action event
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    LKListDetailVC *vc = [[LKListDetailVC alloc]initWithStyle:UITableViewStyleGrouped];
+    vc.delegate = self;
+    vc.listToEidt = _lists[indexPath.row];
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
-*/
+
+- (void)itemRightClicked: (UIBarButtonItem *)sender
+{
+    LKListDetailVC *vc = [[LKListDetailVC alloc]initWithStyle:UITableViewStyleGrouped];
+    vc.delegate = self;
+    LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mark - life cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.title = @"All Lists";
+    UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(itemRightClicked:)];
+    self.navigationItem.rightBarButtonItem = itemRight;
+}
 
 @end

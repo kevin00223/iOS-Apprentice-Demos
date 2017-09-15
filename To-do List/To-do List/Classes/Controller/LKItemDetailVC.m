@@ -76,7 +76,7 @@
 
 - (void)doneBtnClicked: (UIBarButtonItem *)sender
 {
-    LKChecklistModel *model = [[LKChecklistModel alloc]init];
+    LKChecklistItem *model = [[LKChecklistItem alloc]init];
     model.text = _textField.text;
     
     if ([self.title isEqualToString:@"Edit Item"]) {

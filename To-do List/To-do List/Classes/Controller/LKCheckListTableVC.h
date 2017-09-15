@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LKChecklist.h"
 
 @interface LKCheckListTableVC : UITableViewController
+
+@property (nonatomic, strong) LKChecklist *checklist;
 
 @end

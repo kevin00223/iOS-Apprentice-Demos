@@ -10,4 +10,6 @@
 
 @interface LKChecklist : NSObject
 
+@property (nonatomic, copy) NSString *name;
+
 @end
