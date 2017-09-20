@@ -29,7 +29,7 @@
 {
     //添加textField
     UITextField *textField = [[UITextField alloc]init];
-    textField.placeholder = @"Name of the Item";
+    textField.placeholder = @"Name of the List";
     [self.tableView addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.tableView).offset(8);
@@ -73,6 +73,7 @@
     return YES;
 }
 
+#pragma mark - life cycle
 - (void)viewWillAppear:(BOOL)animated
 {
     UIBarButtonItem *itemLeft = [[UIBarButtonItem alloc]initWithTitle:@"AllLists" style:UIBarButtonItemStylePlain target:self action:@selector(allListsClicked:)];

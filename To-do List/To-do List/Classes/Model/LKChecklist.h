@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LKChecklistItem.h"
 
 @interface LKChecklist : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) NSMutableArray<LKChecklistItem *> *items;
 
 @end

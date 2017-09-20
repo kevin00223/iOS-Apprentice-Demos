@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LKDataModel.h"
 
 @interface LKAllListsVC : UITableViewController
+
+@property (nonatomic, strong) LKDataModel *dataModel;
+
+//- (void)saveDataToFile;
 
 @end

@@ -24,6 +24,7 @@
 		A2C463E91F6A655700E7BD12 /* LKAllListsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C463E81F6A655700E7BD12 /* LKAllListsVC.m */; };
 		A2C463EC1F6A6D8700E7BD12 /* LKChecklist.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C463EB1F6A6D8700E7BD12 /* LKChecklist.m */; };
 		A2C463EF1F6A8A5B00E7BD12 /* LKListDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C463EE1F6A8A5B00E7BD12 /* LKListDetailVC.m */; };
+		A2C463F21F72043400E7BD12 /* LKDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C463F11F72043400E7BD12 /* LKDataModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		A2C463EB1F6A6D8700E7BD12 /* LKChecklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKChecklist.m; sourceTree = "<group>"; };
 		A2C463ED1F6A8A5B00E7BD12 /* LKListDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKListDetailVC.h; sourceTree = "<group>"; };
 		A2C463EE1F6A8A5B00E7BD12 /* LKListDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKListDetailVC.m; sourceTree = "<group>"; };
+		A2C463F01F72043400E7BD12 /* LKDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDataModel.h; sourceTree = "<group>"; };
+		A2C463F11F72043400E7BD12 /* LKDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDataModel.m; sourceTree = "<group>"; };
 		CFE6332B2B90FAB37F26527C /* Pods-To-do List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-do List.release.xcconfig"; path = "Pods/Target Support Files/Pods-To-do List/Pods-To-do List.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +223,8 @@
 				A20BE0C61F024F1F00149D56 /* LKChecklistItem.m */,
 				A2C463EA1F6A6D8700E7BD12 /* LKChecklist.h */,
 				A2C463EB1F6A6D8700E7BD12 /* LKChecklist.m */,
+				A2C463F01F72043400E7BD12 /* LKDataModel.h */,
+				A2C463F11F72043400E7BD12 /* LKDataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				A2413B521F61339900A45CF0 /* LKCheckListCell.m in Sources */,
 				A2C463E91F6A655700E7BD12 /* LKAllListsVC.m in Sources */,
 				A2065A861F010F6900C4A08F /* AppDelegate.m in Sources */,
+				A2C463F21F72043400E7BD12 /* LKDataModel.m in Sources */,
 				A2065A831F010F6900C4A08F /* main.m in Sources */,
 				A2C463EC1F6A6D8700E7BD12 /* LKChecklist.m in Sources */,
 				A261B32B1F330D8F009F75F8 /* LKItemDetailVC.m in Sources */,
