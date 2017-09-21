@@ -14,7 +14,7 @@
 
 static NSString *cellID = @"cellID";
 
-@interface LKAllListsVC () <LKListDetailDelegate>
+@interface LKAllListsVC () <LKListDetailDelegate, UINavigationControllerDelegate>
 
 
 @end
@@ -94,6 +94,9 @@ static NSString *cellID = @"cellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.dataModel setIndexOfSelectedChecklist:indexPath.row];
+    
     LKCheckListTableVC *vc = [[LKCheckListTableVC alloc]init];
     LKChecklist *model = self.dataModel.lists[indexPath.row];
     vc.checklist = model;
@@ -134,6 +137,14 @@ static NSString *cellID = @"cellID";
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark - uinavigationcontrollerdelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    //每次显示新控制器时 都会被调用
+    if (viewController == self) {
+        [self.dataModel setIndexOfSelectedChecklist:-1]; //即用户没有选中任何checklist
+    }
+}
 
 #pragma mark - action event
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -159,6 +170,20 @@ static NSString *cellID = @"cellID";
     self.title = @"All Lists";
     UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(itemRightClicked:)];
     self.navigationItem.rightBarButtonItem = itemRight;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.navigationController.delegate = self;
+    NSInteger index = [self.dataModel indexOfSelectedChecklist];
+    if (index >= 0 && index < self.dataModel.lists.count) { //保证应用在进入详情页但未保存数据就退出的情况下 程序不崩溃
+        LKChecklist *model = self.dataModel.lists[index];
+        LKCheckListTableVC *vc = [[LKCheckListTableVC alloc]init];
+        vc.checklist = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - data saving

@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         [self loadChecklists];
+        [self registerDefault];
     }
     return self;
 }
@@ -53,6 +54,25 @@
     }else{
         self.lists = [NSMutableArray array];
     }
+}
+
+#pragma mark - 保存用户数据
+//设置ChecklistIndex的初始/默认值
+- (void)registerDefault
+{
+    NSDictionary *dict = @{@"ChecklistIndex": @-1};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+}
+
+- (NSInteger)indexOfSelectedChecklist
+{
+    NSInteger index = [[NSUserDefaults standardUserDefaults] integerForKey:@"ChecklistIndex"];
+    return index;
+}
+
+- (void)setIndexOfSelectedChecklist:(NSInteger)index
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"ChecklistIndex"];
 }
 
 @end

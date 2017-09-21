@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LKChecklist.h"
 
 @interface LKDataModel : NSObject
 
-@property (nonatomic, strong) NSMutableArray *lists;
+@property (nonatomic, strong) NSMutableArray <LKChecklist *> *lists;
 
 - (void)saveDataToFile;
+
+//保存用户数据
+- (NSInteger)indexOfSelectedChecklist;
+- (void)setIndexOfSelectedChecklist: (NSInteger)index;
 
 @end
