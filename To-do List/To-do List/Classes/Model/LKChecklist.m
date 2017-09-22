@@ -33,4 +33,15 @@
     return self;
 }
 
+- (int)countUntoggledItems
+{
+    int count = 0;
+    for (LKChecklistItem *item in self.items) {
+        if (!item.show) {
+            count++;
+        }
+    }
+    return count;
+}
+
 @end

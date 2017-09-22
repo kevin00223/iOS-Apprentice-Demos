@@ -25,7 +25,7 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
     
     //注册单元格
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
 }
 
 //- (instancetype)initWithStyle:(UITableViewStyle)style
@@ -83,10 +83,22 @@ static NSString *cellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     LKChecklist *list = self.dataModel.lists[indexPath.row];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    }
     cell.textLabel.text = list.name;
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
+    if (list.items.count == 0) {
+        cell.detailTextLabel.text = @"(No Items)";
+    }else if([list countUntoggledItems] == 0){
+        cell.detailTextLabel.text = @"All Done";
+    }else{
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d remaining", [list countUntoggledItems]];
+    }
     return cell;
 }
 
@@ -170,6 +182,8 @@ static NSString *cellID = @"cellID";
     self.title = @"All Lists";
     UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(itemRightClicked:)];
     self.navigationItem.rightBarButtonItem = itemRight;
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated

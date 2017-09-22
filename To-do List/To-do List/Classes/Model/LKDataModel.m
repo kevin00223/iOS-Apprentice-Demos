@@ -16,6 +16,7 @@
     if (self) {
         [self loadChecklists];
         [self registerDefault];
+        [self isFirstTime];
     }
     return self;
 }
@@ -56,11 +57,24 @@
     }
 }
 
+- (void)isFirstTime
+{
+    BOOL firstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"FirstTime"];
+    if (firstTime) {
+        LKChecklist *list = [[LKChecklist alloc]init];
+        list.name = @"List";
+        [self.lists addObject:list];
+        [self setIndexOfSelectedChecklist:0];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FirstTime"];
+    }
+}
+
 #pragma mark - 保存用户数据
 //设置ChecklistIndex的初始/默认值
 - (void)registerDefault
 {
-    NSDictionary *dict = @{@"ChecklistIndex": @-1};
+    NSDictionary *dict = @{@"ChecklistIndex": @-1, @"FirstTime": @YES};
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 

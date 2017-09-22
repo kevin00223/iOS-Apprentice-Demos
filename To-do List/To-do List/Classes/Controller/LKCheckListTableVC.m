@@ -134,11 +134,17 @@ static NSString *cellID = @"cellID";
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
     LKChecklistItem *model = self.checklist.items[indexPath.row];
-    if ([model isKindOfClass:[NSString class]]) {
-        cell.projectLabel.text = (NSString *)model;
+    cell.projectLabel.text = model.text;
+    if (!model.show) {
+        cell.toggleLabel.text = @"";
     }else{
-        cell.projectLabel.text = model.text;
+        cell.toggleLabel.text = @"√";
     }
+//    if ([model isKindOfClass:[NSString class]]) {
+//        cell.projectLabel.text = (NSString *)model;
+//    }else{
+//        cell.projectLabel.text = model.text;
+//    }
 
     return cell;
 }

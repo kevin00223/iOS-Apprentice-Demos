@@ -14,4 +14,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSMutableArray<LKChecklistItem *> *items;
 
+- (int)countUntoggledItems;
+
 @end
