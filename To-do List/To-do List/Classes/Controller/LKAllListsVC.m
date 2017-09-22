@@ -90,6 +90,7 @@ static NSString *cellID = @"cellID";
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     cell.textLabel.text = list.name;
+    cell.imageView.image = [UIImage imageNamed:list.iconName];
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     if (list.items.count == 0) {
@@ -128,25 +129,32 @@ static NSString *cellID = @"cellID";
 #pragma mark - LKListDetailDelegate
 - (void)listDetail:(LKListDetailVC *)listDetail didEditList:(LKChecklist *)list
 {
-    NSInteger index = [self.dataModel.lists indexOfObject:list];
+    [self.dataModel sortChecklists];
+    [self.tableView reloadData];
+    
+//    NSInteger index = [self.dataModel.lists indexOfObject:list];
     //保存数据
 //    [self saveDataToFile];
 //    [self saveData:_lists];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.text = list.name;
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//    cell.textLabel.text = list.name;
 }
 
 - (void)listDetail:(LKListDetailVC *)listDetail didAddList:(LKChecklist *)list
 {
-    NSInteger index = [self.dataModel.lists count];
     [self.dataModel.lists addObject:list];
+    [self.dataModel sortChecklists];
+    [self.tableView reloadData];
+    
+//    NSInteger index = [self.dataModel.lists count];
+//    [self.dataModel.lists addObject:list];
     //保存数据
 //    [self saveDataToFile];
 //    [self saveData:_lists];
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    NSArray *indexPaths = @[newIndexPath];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//    NSArray *indexPaths = @[newIndexPath];
+//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - uinavigationcontrollerdelegate

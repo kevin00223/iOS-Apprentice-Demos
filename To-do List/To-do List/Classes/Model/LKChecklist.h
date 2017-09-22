@@ -12,6 +12,7 @@
 @interface LKChecklist : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, strong) NSMutableArray<LKChecklistItem *> *items;
 
 - (int)countUntoggledItems;

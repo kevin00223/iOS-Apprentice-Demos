@@ -70,6 +70,11 @@
     }
 }
 
+- (void)sortChecklists
+{
+    [self.lists sortUsingSelector:@selector(compare:)];
+}
+
 #pragma mark - 保存用户数据
 //设置ChecklistIndex的初始/默认值
 - (void)registerDefault
