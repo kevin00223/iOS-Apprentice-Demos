@@ -17,7 +17,7 @@
 
 //保存用户数据
 - (NSInteger)indexOfSelectedChecklist;
-- (void)setIndexOfSelectedChecklist: (NSInteger)index;\
+- (void)setIndexOfSelectedChecklist: (NSInteger)index;
 
 //对checklist进行排序
 - (void)sortChecklists;

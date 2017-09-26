@@ -31,7 +31,7 @@
 {
     if (self = [super init]) {
         self.items = [NSMutableArray array];
-        self.iconName = @"Drinks";
+        self.iconName = @"No Icon";
     }
     return self;
 }

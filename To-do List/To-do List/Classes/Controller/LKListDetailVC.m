@@ -8,11 +8,15 @@
 
 #import "LKListDetailVC.h"
 #import "Masonry.h"
+#import "LKIconPickerVC.h"
 
-@interface LKListDetailVC () <UITextFieldDelegate>
+static NSString *cellID = @"cellID";
+
+@interface LKListDetailVC () <UITextFieldDelegate, LKIconPickerDelegate>
 {
     UITextField *_textField;
     UIBarButtonItem *_itemRight;
+    NSString *_iconName;
 }
 
 @end
@@ -21,27 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setupUI];
 }
 
-- (void)setupUI
+- (instancetype)initWithStyle:(UITableViewStyle)style
 {
-    //添加textField
-    UITextField *textField = [[UITextField alloc]init];
-    textField.placeholder = @"Name of the List";
-    [self.tableView addSubview:textField];
-    [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.tableView).offset(8);
-        make.top.equalTo(self.view).offset(24);
-        make.height.offset(30);
-        make.width.offset(304);
-    }];
-    textField.backgroundColor = [UIColor whiteColor];
-    _textField = textField;
-    _textField.delegate = self;
+    self = [super initWithStyle: UITableViewStyleGrouped];
+    if (self) {
+        _iconName = @"Folder";
+    }
+    return self;
 }
 
+#pragma mark - action
 - (void)allListsClicked: (UIBarButtonItem *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -65,12 +60,77 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - uitableview datasource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    if (indexPath.section == 0) {
+        UITextField *textField = [[UITextField alloc]init];
+        textField.placeholder = @"   Name of the List";
+        [cell.contentView addSubview:textField];
+        [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(cell);
+        }];
+        _textField = textField;
+        _textField.delegate = self;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UILabel *iconLabel = [[UILabel alloc]init];
+        UIImageView *iconImage = [[UIImageView alloc]init];
+        iconLabel.text = @"   ICON";
+        iconImage.image = [UIImage imageNamed:_iconName];
+        [cell.contentView addSubview:iconLabel];
+        [cell.contentView addSubview:iconImage];
+        [iconLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.equalTo(cell);
+        }];
+        [iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(cell);
+            make.right.equalTo(cell).offset(-24);
+            make.width.offset(44);
+        }];
+    }
+    return cell;
+}
+
+
+#pragma mark - uitableview delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        LKIconPickerVC *iconVC = [[LKIconPickerVC alloc]init];
+        iconVC.delegate = self;
+        [self.navigationController pushViewController:iconVC animated:YES];
+    }
+}
+
 #pragma mark - uitextfielddelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newStr = [_textField.text stringByReplacingCharactersInRange:range withString:string];
     _itemRight.enabled = (newStr.length > 0);
     return YES;
+}
+
+#pragma mark - LKIconPickerDelegate
+- (void)iconPicker:(LKIconPickerVC *)iconPicker didSelectIcon:(NSString *)iconName
+{
+    _iconName = iconName;
+    [self.tableView reloadData];
 }
 
 #pragma mark - life cycle

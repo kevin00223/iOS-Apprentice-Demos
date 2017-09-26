@@ -110,7 +110,7 @@ static NSString *cellID = @"cellID";
     
     [self.dataModel setIndexOfSelectedChecklist:indexPath.row];
     
-    LKCheckListTableVC *vc = [[LKCheckListTableVC alloc]init];
+    LKCheckListTableVC *vc = [[LKCheckListTableVC alloc]initWithStyle:UITableViewStyleGrouped];
     LKChecklist *model = self.dataModel.lists[indexPath.row];
     vc.checklist = model;
     [self.navigationController pushViewController:vc animated:YES];

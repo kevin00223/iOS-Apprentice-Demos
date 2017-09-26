@@ -80,6 +80,7 @@ static NSString *cellID = @"cellID";
     [self.tableView registerNib:[UINib nibWithNibName:@"LKCheckListCell" bundle:nil] forCellReuseIdentifier:cellID];
     
     NSLog(@"%@", NSHomeDirectory());
+    
 }
 
 //获取数据
