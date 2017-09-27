@@ -17,6 +17,7 @@ static NSString *cellID = @"cellID";
     UITextField *_textField;
     UIBarButtonItem *_itemRight;
     NSString *_iconName;
+    NSString *test;
 }
 
 @end
