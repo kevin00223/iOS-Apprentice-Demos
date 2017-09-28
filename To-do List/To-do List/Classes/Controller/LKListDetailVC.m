@@ -181,6 +181,11 @@ static NSString *cellID = @"cellID";
 }
 
 #pragma mark - life cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [_textField becomeFirstResponder];

@@ -190,6 +190,7 @@ static NSString *cellID = @"cellID";
     self.title = @"All Lists";
     UIBarButtonItem *itemRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(itemRightClicked:)];
     self.navigationItem.rightBarButtonItem = itemRight;
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
     
     [self.tableView reloadData];
 }

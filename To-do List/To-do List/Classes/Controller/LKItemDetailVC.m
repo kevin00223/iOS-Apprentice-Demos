@@ -112,6 +112,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
     //设置第一响应者
     [_textField becomeFirstResponder];
 }
