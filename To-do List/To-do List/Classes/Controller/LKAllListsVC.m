@@ -169,7 +169,7 @@ static NSString *cellID = @"cellID";
 #pragma mark - action event
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    LKListDetailVC *vc = [[LKListDetailVC alloc]initWithStyle:UITableViewStyleGrouped];
+    LKListDetailVC *vc = [[LKListDetailVC alloc]init];
     vc.delegate = self;
     vc.listToEidt = self.dataModel.lists[indexPath.row];
     LKNavigationController *nav = [[LKNavigationController alloc]initWithRootViewController:vc];

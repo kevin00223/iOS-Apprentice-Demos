@@ -190,6 +190,11 @@ static NSString *cellID = @"cellID";
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
 #pragma mark - LKItemDetailVCDelegate
 - (void)itemDetailVCDidCancel:(LKItemDetailVC *)itemDetailVC
 {
