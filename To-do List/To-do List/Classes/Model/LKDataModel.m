@@ -75,11 +75,20 @@
     [self.lists sortUsingSelector:@selector(compare:)];
 }
 
++ (NSInteger)nextChecklistItemID
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSInteger itemID = [userDefault integerForKey:@"ChecklistItemID"];
+    [userDefault setInteger:itemID+1 forKey:@"ChecklistItemID"];
+    [userDefault synchronize];
+    return itemID;
+}
+
 #pragma mark - 保存用户数据
 //设置ChecklistIndex的初始/默认值
 - (void)registerDefault
 {
-    NSDictionary *dict = @{@"ChecklistIndex": @-1, @"FirstTime": @YES};
+    NSDictionary *dict = @{@"ChecklistIndex": @-1, @"FirstTime": @YES, @"ChecklistItemID": @0};
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 

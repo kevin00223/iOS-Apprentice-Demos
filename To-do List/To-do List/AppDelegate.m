@@ -36,6 +36,11 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"收到通知了");
+}
+
 //保存数据
 - (void)saveData
 {

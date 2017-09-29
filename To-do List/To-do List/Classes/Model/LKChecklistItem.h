@@ -11,9 +11,11 @@
 @interface LKChecklistItem : NSObject <NSCoding>
 
 @property (nonatomic, copy)NSString *text;
-//@property (nonatomic, copy)NSString *image;
 @property (nonatomic, assign)BOOL show;
 
-//+ (instancetype) checklistWithDict: (NSDictionary *)dict;
+//LocalNotification
+@property (nonatomic, copy)NSDate *dueDate;
+@property (nonatomic, assign)BOOL shouldRemind;
+@property (nonatomic, assign)NSInteger itemID;
 
 @end

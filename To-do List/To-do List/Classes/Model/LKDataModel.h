@@ -22,5 +22,8 @@
 //对checklist进行排序
 - (void)sortChecklists;
 
+//localNotification
++ (NSInteger)nextChecklistItemID;
+
 
 @end

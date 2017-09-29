@@ -10,10 +10,15 @@
 #import "masonry.h"
 #import "LKNavigationController.h"
 
-@interface LKItemDetailVC () <UITextFieldDelegate>
+static NSString *cellID = @"cellID";
+
+@interface LKItemDetailVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     UITextField *_textField;
     UIBarButtonItem *_itemRight;
+    
+    NSDate *_dueDate;
+    UISwitch *_switchControl;
 }
 
 @end
@@ -29,11 +34,11 @@
     self.navigationItem.leftBarButtonItem = itemLeft;
     self.navigationItem.rightBarButtonItem = _itemRight;
     
-    [self setupUI];
+//    [self setupUI];
     
     if (self.itemToEdit != nil) {
         self.title = @"Edit Item";
-        _textField.text = self.itemToEdit.text;
+//        _textField.text = self.itemToEdit.text;
         //设置初始为能点击状态
         _itemRight.enabled = YES;
     }else{
@@ -42,29 +47,35 @@
         _itemRight.enabled = NO;
     }
     
-    //注册单元格
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    //设置代理
-    _textField.delegate = self;
     //隐藏键盘
     UITapGestureRecognizer *myTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(scrollTap:)];
+    myTap.delegate = self;
     [self.tableView addGestureRecognizer:myTap];
 }
 
-- (void)setupUI
+//- (void)setupUI
+//{
+//    //添加textField
+//    UITextField *textField = [[UITextField alloc]init];
+//    textField.placeholder = @"Name of the Item";
+//    [self.tableView addSubview:textField];
+//    [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.tableView).offset(8);
+//        make.top.equalTo(self.view).offset(24);
+//        make.height.offset(30);
+//        make.width.offset(304);
+//    }];
+//    textField.backgroundColor = [UIColor whiteColor];
+//    _textField = textField;
+//}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    //添加textField
-    UITextField *textField = [[UITextField alloc]init];
-    textField.placeholder = @"Name of the Item";
-    [self.tableView addSubview:textField];
-    [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.tableView).offset(8);
-        make.top.equalTo(self.view).offset(24);
-        make.height.offset(30);
-        make.width.offset(304);
-    }];
-    textField.backgroundColor = [UIColor whiteColor];
-    _textField = textField;
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 - (void)checklistsBtnClicked: (UIBarButtonItem *)sender
@@ -76,15 +87,18 @@
 
 - (void)doneBtnClicked: (UIBarButtonItem *)sender
 {
-    LKChecklistItem *model = [[LKChecklistItem alloc]init];
-    model.text = _textField.text;
-    
     if ([self.title isEqualToString:@"Edit Item"]) {
         self.itemToEdit.text = _textField.text;
+        self.itemToEdit.shouldRemind = _switchControl.on;
+        self.itemToEdit.dueDate = _dueDate;
         if ([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishEditingItem:)]) {
             [self.delegate itemDetailVC:self didFinishEditingItem:self.itemToEdit];
         }
     }else{
+        LKChecklistItem *model = [[LKChecklistItem alloc]init];
+        model.text = _textField.text;
+        model.shouldRemind = _switchControl.on;
+        model.dueDate = _dueDate;
         if([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishAddingItem:)]){
             [self.delegate itemDetailVC:self didFinishAddingItem:model];
         }
@@ -94,7 +108,100 @@
 }
 
 #pragma mark - tableview datasource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 1;
+    }else{
+        return 2;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    if (indexPath.section == 0) {
+        UITextField *textField = [[UITextField alloc]init];
+        textField.placeholder = @"Name of the Item";
+        [cell addSubview:textField];
+        [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(cell).offset(14);
+            make.top.right.bottom.equalTo(cell);
+        }];
+        _textField = textField;
+        if (self.itemToEdit != nil) {
+            _textField.text = self.itemToEdit.text;
+        }
+        //设置代理
+        _textField.delegate = self;
+    }else{
+        if (indexPath.row == 0) {
+            UILabel *label = [[UILabel alloc]init];
+            label.text = @"Remind Me";
+            UISwitch *swch = [[UISwitch alloc]init];
+            [cell addSubview:label];
+            [cell addSubview:swch];
+            [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cell).offset(14);
+                make.top.bottom.equalTo(cell);
+            }];
+            [swch mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell).offset(-14);
+                make.top.equalTo(cell).offset(4);
+                make.bottom.equalTo(cell).offset(-4);
+            }];
+            _switchControl = swch;
+            if (self.itemToEdit != nil) {
+                //编辑已有checkList switch状态就看该checkList的shouldRemind值
+                _switchControl.on = self.itemToEdit.shouldRemind;
+            }else
+            {
+                //新建checkList 就设置成关闭状态
+                _switchControl.on = NO;
+            }
+        }else{
+            UILabel *label = [[UILabel alloc]init];
+            UILabel *dueDate = [[UILabel alloc]init];
+            label.text = @"Due Date";
+            [cell addSubview:label];
+            [cell addSubview:dueDate];
+            [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cell).offset(14);
+                make.top.bottom.equalTo(cell);
+            }];
+            [dueDate mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell).offset(-14);
+                make.top.bottom.equalTo(cell);
+            }];
+            if (self.itemToEdit != nil) {
+                _dueDate = self.itemToEdit.dueDate;
+                dueDate.text = [self updateDueDateLabelWithDate:_dueDate];
+            }else{
+                //新建的checklist 其dueDate就是现在 即[NSDate date]
+                _dueDate = [NSDate date];
+                dueDate.text = [self updateDueDateLabelWithDate:_dueDate];
+            }
+        }
+    }
+    return cell;
+}
+
+- (NSString *)updateDueDateLabelWithDate: (NSDate *)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *dateStr = [formatter stringFromDate:date];
+    return dateStr;
+}
 
 #pragma mark - uitextfielddelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -113,6 +220,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     //设置第一响应者
     [_textField becomeFirstResponder];
 }

@@ -7,21 +7,26 @@
 //
 
 #import "LKChecklistItem.h"
+#import "LKDataModel.h"
 
 @implementation LKChecklistItem
 
-//+ (instancetype)checklistWithDict:(NSDictionary *)dict
-//{
-//    LKChecklistItem *model = [[LKChecklistItem alloc]init];
-//    [model setValuesForKeysWithDictionary:dict];
-//    return model;
-//}
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.itemID = [LKDataModel nextChecklistItemID];
+    }
+    return self;
+}
 
 //保存数据
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.text forKey:@"Text"];
     [aCoder encodeBool:self.show forKey:@"Show"];
+    [aCoder encodeObject:self.dueDate forKey:@"DueDate"];
+    [aCoder encodeBool:self.shouldRemind forKey:@"ShouldRemind"];
+    [aCoder encodeInteger:self.itemID forKey:@"ItemID"];
 }
 
 //获取数据
@@ -30,6 +35,9 @@
     if(self = [super init]) {
         self.text = [aDecoder decodeObjectForKey:@"Text"];
         self.show = [aDecoder decodeBoolForKey:@"Show"];
+        self.dueDate = [aDecoder decodeObjectForKey:@"DueDate"];
+        self.shouldRemind = [aDecoder decodeBoolForKey:@"ShouldRemind"];
+        self.itemID = [aDecoder decodeIntegerForKey:@"ItemID"];
     }
     return self;
 }

@@ -158,6 +158,7 @@ static NSString *cellID = @"cellID";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
+        self.listToEidt.name = _textField.text;
         LKIconPickerVC *iconVC = [[LKIconPickerVC alloc]init];
         iconVC.delegate = self;
         [self.navigationController pushViewController:iconVC animated:YES];
