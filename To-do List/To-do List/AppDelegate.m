@@ -33,6 +33,7 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
+    //获取用户授权
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     

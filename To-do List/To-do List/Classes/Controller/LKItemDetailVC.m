@@ -94,6 +94,7 @@ static NSString *cellID = @"cellID";
         self.itemToEdit.shouldRemind = _switchControl.on;
 //        self.itemToEdit.dueDate = _dueDate;
         self.itemToEdit.dueDate = [self convertStringToDate:_dueDateLabel.text];
+        [self.itemToEdit scheduleNotifications];
         if ([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishEditingItem:)]) {
             [self.delegate itemDetailVC:self didFinishEditingItem:self.itemToEdit];
         }
@@ -102,6 +103,7 @@ static NSString *cellID = @"cellID";
         model.text = _textField.text;
         model.shouldRemind = _switchControl.on;
         model.dueDate = _dueDate;
+        [model scheduleNotifications];
         if([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishAddingItem:)]){
             [self.delegate itemDetailVC:self didFinishAddingItem:model];
         }

@@ -135,8 +135,8 @@ static NSString *cellID = @"cellID";
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
     LKChecklistItem *model = self.checklist.items[indexPath.row];
-//    cell.projectLabel.text = model.text;
-    cell.projectLabel.text = [NSString stringWithFormat:@"%ld:%@", (long)model.itemID, model.text];
+    cell.projectLabel.text = model.text;
+//    cell.projectLabel.text = [NSString stringWithFormat:@"%ld:%@", (long)model.itemID, model.text];
     if (!model.show) {
         cell.toggleLabel.text = @"";
     }else{
