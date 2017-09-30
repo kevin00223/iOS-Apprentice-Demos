@@ -18,4 +18,6 @@
 @property (nonatomic, assign)BOOL shouldRemind;
 @property (nonatomic, assign)NSInteger itemID;
 
+- (void)scheduleNotifications;
+
 @end

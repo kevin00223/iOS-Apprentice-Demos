@@ -19,6 +19,8 @@ static NSString *cellID = @"cellID";
     
     NSDate *_dueDate;
     UISwitch *_switchControl;
+    BOOL _datePickerVisible;
+    UILabel *_dueDateLabel;
 }
 
 @end
@@ -90,7 +92,8 @@ static NSString *cellID = @"cellID";
     if ([self.title isEqualToString:@"Edit Item"]) {
         self.itemToEdit.text = _textField.text;
         self.itemToEdit.shouldRemind = _switchControl.on;
-        self.itemToEdit.dueDate = _dueDate;
+//        self.itemToEdit.dueDate = _dueDate;
+        self.itemToEdit.dueDate = [self convertStringToDate:_dueDateLabel.text];
         if ([self.delegate respondsToSelector:@selector(itemDetailVC:didFinishEditingItem:)]) {
             [self.delegate itemDetailVC:self didFinishEditingItem:self.itemToEdit];
         }
@@ -118,13 +121,18 @@ static NSString *cellID = @"cellID";
     if (section == 0) {
         return 1;
     }else{
-        return 2;
+        if (_datePickerVisible == YES) {
+            return 3;
+        }else{
+            return 2;
+        }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
@@ -167,7 +175,7 @@ static NSString *cellID = @"cellID";
                 //新建checkList 就设置成关闭状态
                 _switchControl.on = NO;
             }
-        }else{
+        }else if(indexPath.row == 1){
             UILabel *label = [[UILabel alloc]init];
             UILabel *dueDate = [[UILabel alloc]init];
             label.text = @"Due Date";
@@ -181,17 +189,59 @@ static NSString *cellID = @"cellID";
                 make.right.equalTo(cell).offset(-14);
                 make.top.bottom.equalTo(cell);
             }];
+            _dueDateLabel = dueDate;
             if (self.itemToEdit != nil) {
                 _dueDate = self.itemToEdit.dueDate;
-                dueDate.text = [self updateDueDateLabelWithDate:_dueDate];
+                _dueDateLabel.text = [self updateDueDateLabelWithDate:_dueDate];
             }else{
                 //新建的checklist 其dueDate就是现在 即[NSDate date]
                 _dueDate = [NSDate date];
-                dueDate.text = [self updateDueDateLabelWithDate:_dueDate];
+                _dueDateLabel.text = [self updateDueDateLabelWithDate:_dueDate];
+            }
+        }else{
+            if (_datePickerVisible == YES) {
+                UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+                [cell.contentView addSubview:datePicker];
+                [datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(cell);
+                }];
+                [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
             }
         }
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 & indexPath.row == 2) {
+        return 217;
+    }else{
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 & indexPath.row == 1) {
+        if (!_datePickerVisible) {
+            [self showDatePicker];
+        }else{
+            [self hideDatePicker];
+        }
+    }
+}
+
+- (void)showDatePicker
+{
+    _datePickerVisible = YES;
+    [self.tableView reloadData];
+}
+
+- (void)hideDatePicker
+{
+    _datePickerVisible = NO;
+    [self.tableView reloadData];
 }
 
 - (NSString *)updateDueDateLabelWithDate: (NSDate *)date
@@ -203,12 +253,34 @@ static NSString *cellID = @"cellID";
     return dateStr;
 }
 
+- (NSDate *)convertStringToDate: (NSString *)string
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
+
+- (void)dateChanged:(UIDatePicker *)datePicker
+{
+    _dueDateLabel.text = [self updateDueDateLabelWithDate:datePicker.date];
+    _dueDateLabel.textColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
+}
+
 #pragma mark - uitextfielddelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newText = [_textField.text stringByReplacingCharactersInRange:range withString:string];
     _itemRight.enabled = ([newText length] > 0);
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+//TODO:
+    //点击textField 隐藏datePicker, 以免键盘盖住datePicker
+//    [self hideDatePicker];
 }
 
 //隐藏键盘
@@ -224,10 +296,8 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //设置第一响应者
     [_textField becomeFirstResponder];
 }
-
 
 
 @end

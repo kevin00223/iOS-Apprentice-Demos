@@ -42,4 +42,11 @@
     return self;
 }
 
+- (void)scheduleNotifications
+{
+    if (self.shouldRemind && [self.dueDate compare:[NSDate date]] != NSOrderedAscending) {
+        
+    }
+}
+
 @end
