@@ -17,6 +17,7 @@ static NSString *cellID = @"cellID";
     UITextField *_textField;
     UIBarButtonItem *_itemRight;
     NSString *_iconName;
+    NSString *_newStr;
 }
 
 @end
@@ -38,8 +39,10 @@ static NSString *cellID = @"cellID";
         self.title = @"Edit Chekclist";
     }else{
         _itemRight.enabled = NO;
+//        self.listToEidt = [LKChecklist new];
         self.title = @"List Detail";
     }
+    
     
     //添加取消键盘的手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancelKeyboard)];
@@ -129,8 +132,11 @@ static NSString *cellID = @"cellID";
         _textField = textField;
         if (self.listToEidt != nil){
             _textField.text = self.listToEidt.name;
+        }else{
+            _textField.text = _newStr;
         }
         _textField.delegate = self;
+        [_textField becomeFirstResponder];
     }else if(indexPath.section == 1){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         UILabel *iconLabel = [[UILabel alloc]init];
@@ -170,7 +176,7 @@ static NSString *cellID = @"cellID";
 {
     NSString *newStr = [_textField.text stringByReplacingCharactersInRange:range withString:string];
     _itemRight.enabled = (newStr.length > 0);
-    self.listToEidt.name = newStr;
+    _newStr = newStr;
     return YES;
 }
 
@@ -187,9 +193,9 @@ static NSString *cellID = @"cellID";
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [_textField becomeFirstResponder];
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [_textField resignFirstResponder];
+//}
 
 @end

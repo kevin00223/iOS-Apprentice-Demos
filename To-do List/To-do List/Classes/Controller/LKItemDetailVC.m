@@ -21,6 +21,8 @@ static NSString *cellID = @"cellID";
     UISwitch *_switchControl;
     BOOL _datePickerVisible;
     UILabel *_dueDateLabel;
+    NSString *_newStr;
+    NSString *_dueDateStr;
 }
 
 @end
@@ -141,7 +143,7 @@ static NSString *cellID = @"cellID";
     if (indexPath.section == 0) {
         UITextField *textField = [[UITextField alloc]init];
         textField.placeholder = @"Name of the Item";
-        [cell addSubview:textField];
+        [cell.contentView addSubview:textField];
         [textField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(cell).offset(14);
             make.top.right.bottom.equalTo(cell);
@@ -149,6 +151,8 @@ static NSString *cellID = @"cellID";
         _textField = textField;
         if (self.itemToEdit != nil) {
             _textField.text = self.itemToEdit.text;
+        }else{
+            _textField.text = _newStr;
         }
         //设置代理
         _textField.delegate = self;
@@ -157,8 +161,8 @@ static NSString *cellID = @"cellID";
             UILabel *label = [[UILabel alloc]init];
             label.text = @"Remind Me";
             UISwitch *swch = [[UISwitch alloc]init];
-            [cell addSubview:label];
-            [cell addSubview:swch];
+            [cell.contentView addSubview:label];
+            [cell.contentView addSubview:swch];
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(cell).offset(14);
                 make.top.bottom.equalTo(cell);
@@ -181,8 +185,8 @@ static NSString *cellID = @"cellID";
             UILabel *label = [[UILabel alloc]init];
             UILabel *dueDate = [[UILabel alloc]init];
             label.text = @"Due Date";
-            [cell addSubview:label];
-            [cell addSubview:dueDate];
+            [cell.contentView addSubview:label];
+            [cell.contentView addSubview:dueDate];
             [label mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(cell).offset(14);
                 make.top.bottom.equalTo(cell);
@@ -197,8 +201,13 @@ static NSString *cellID = @"cellID";
                 _dueDateLabel.text = [self updateDueDateLabelWithDate:_dueDate];
             }else{
                 //新建的checklist 其dueDate就是现在 即[NSDate date]
-                _dueDate = [NSDate date];
-                _dueDateLabel.text = [self updateDueDateLabelWithDate:_dueDate];
+                if (_dueDateStr != nil) {
+                    _dueDateLabel.text = _dueDateStr;
+                    _dueDate = [self convertStringToDate:_dueDateStr];
+                }else{
+                    _dueDate = [NSDate date];
+                   _dueDateLabel.text = [self updateDueDateLabelWithDate:_dueDate];
+                }
             }
         }else{
             if (_datePickerVisible == YES) {
@@ -223,9 +232,12 @@ static NSString *cellID = @"cellID";
     }
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 & indexPath.row == 1) {
+        
         if (!_datePickerVisible) {
             [self showDatePicker];
         }else{
@@ -237,12 +249,18 @@ static NSString *cellID = @"cellID";
 - (void)showDatePicker
 {
     _datePickerVisible = YES;
+    if (self.itemToEdit != nil & _newStr != nil) {
+        self.itemToEdit.text = _newStr;
+    }
     [self.tableView reloadData];
 }
 
 - (void)hideDatePicker
 {
     _datePickerVisible = NO;
+    if (self.itemToEdit != nil & _newStr != nil) {
+        self.itemToEdit.text = _newStr;
+    }
     [self.tableView reloadData];
 }
 
@@ -266,7 +284,10 @@ static NSString *cellID = @"cellID";
 
 - (void)dateChanged:(UIDatePicker *)datePicker
 {
+    self.itemToEdit.dueDate = datePicker.date;
     _dueDateLabel.text = [self updateDueDateLabelWithDate:datePicker.date];
+    _dueDateStr = _dueDateLabel.text;
+    _dueDate = [self convertStringToDate:_dueDateLabel.text];
     _dueDateLabel.textColor = [UIColor colorWithRed:4.0/255.0 green:169.0/255.0 blue:235.0/255.0 alpha:1];
 }
 
@@ -275,6 +296,7 @@ static NSString *cellID = @"cellID";
 {
     NSString *newText = [_textField.text stringByReplacingCharactersInRange:range withString:string];
     _itemRight.enabled = ([newText length] > 0);
+    _newStr = newText;
     return YES;
 }
 
@@ -282,7 +304,9 @@ static NSString *cellID = @"cellID";
 {
 //TODO:
     //点击textField 隐藏datePicker, 以免键盘盖住datePicker
-//    [self hideDatePicker];
+//    if (_newStr != nil) {
+//        [self hideDatePicker];
+//    }
 }
 
 //隐藏键盘
