@@ -44,7 +44,7 @@ static NSString *cellID = @"cellID";
     }
     
     
-    //添加取消键盘的手势
+    //添加取消键盘的手势'''
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancelKeyboard)];
     tap.delegate = self;
     [self.tableView addGestureRecognizer:tap];
