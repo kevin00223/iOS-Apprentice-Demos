@@ -1,5 +1,5 @@
 //
-//  LKFirstVC.h
+//  LKCurrentLocationVC.h
 //  MyLocations
 //
 //  Created by likai on 08/11/2017.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKFirstVC : UIViewController
+@interface LKCurrentLocationVC : UIViewController
 
 @end

@@ -1,33 +1,23 @@
 //
-//  LKTabBarVC.m
+//  LKCurrentLocationVC.m
 //  MyLocations
 //
 //  Created by likai on 08/11/2017.
 //  Copyright © 2017 yinbake. All rights reserved.
 //
 
-#import "LKTabBarVC.h"
-#import "LKFirstVC.h"
-#import "LKSecondVC.h"
+#import "LKCurrentLocationVC.h"
 
-@interface LKTabBarVC ()
+@interface LKCurrentLocationVC ()
 
 @end
 
-@implementation LKTabBarVC
+@implementation LKCurrentLocationVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    LKFirstVC *firstVC = [[LKFirstVC alloc]init];
-    UINavigationController *firstNav = [[UINavigationController alloc]initWithRootViewController:firstVC];
-    firstNav.tabBarItem.title = @"First";
-    LKSecondVC *secondVC = [[LKSecondVC alloc]init];
-    UINavigationController *secondNav = [[UINavigationController alloc]initWithRootViewController:secondVC];
-    secondNav.tabBarItem.title = @"Second";
-    self.viewControllers = @[firstNav, secondNav];
-    
+    self.view.backgroundColor = [UIColor greenColor];
 }
 
 - (void)didReceiveMemoryWarning {
