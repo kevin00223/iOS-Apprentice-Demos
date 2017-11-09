@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A20D34651FB458E000EF6DC2 /* LKCurrentLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A20D34641FB458E000EF6DC2 /* LKCurrentLocationView.m */; };
 		A24057DB1FB2F76200CBC0EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A24057DA1FB2F76200CBC0EB /* AppDelegate.m */; };
 		A24057E31FB2F76300CBC0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24057E21FB2F76300CBC0EB /* Assets.xcassets */; };
 		A24057E61FB2F76300CBC0EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24057E41FB2F76300CBC0EB /* LaunchScreen.storyboard */; };
@@ -16,6 +17,7 @@
 		A240580D1FB2F78D00CBC0EB /* LKTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A240580C1FB2F78D00CBC0EB /* LKTabBarVC.m */; };
 		A24058101FB2F7F700CBC0EB /* LKCurrentLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A240580F1FB2F7F700CBC0EB /* LKCurrentLocationVC.m */; };
 		A24058131FB2F80900CBC0EB /* LKSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A24058121FB2F80900CBC0EB /* LKSecondVC.m */; };
+		A240582B1FB44FEF00CBC0EB /* LKCurrentLocation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A240582A1FB44FEF00CBC0EB /* LKCurrentLocation.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A20D34631FB458E000EF6DC2 /* LKCurrentLocationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKCurrentLocationView.h; sourceTree = "<group>"; };
+		A20D34641FB458E000EF6DC2 /* LKCurrentLocationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKCurrentLocationView.m; sourceTree = "<group>"; };
 		A24057D61FB2F76200CBC0EB /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24057D91FB2F76200CBC0EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A24057DA1FB2F76200CBC0EB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 		A240580F1FB2F7F700CBC0EB /* LKCurrentLocationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKCurrentLocationVC.m; sourceTree = "<group>"; };
 		A24058111FB2F80900CBC0EB /* LKSecondVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKSecondVC.h; sourceTree = "<group>"; };
 		A24058121FB2F80900CBC0EB /* LKSecondVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKSecondVC.m; sourceTree = "<group>"; };
+		A240582A1FB44FEF00CBC0EB /* LKCurrentLocation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LKCurrentLocation.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +154,9 @@
 		A24058241FB43E3500CBC0EB /* CurrentLocation */ = {
 			isa = PBXGroup;
 			children = (
-				A240580E1FB2F7F700CBC0EB /* LKCurrentLocationVC.h */,
-				A240580F1FB2F7F700CBC0EB /* LKCurrentLocationVC.m */,
+				A24058291FB44F8300CBC0EB /* View */,
+				A24058281FB44F7B00CBC0EB /* Model */,
+				A24058271FB44F6900CBC0EB /* Controller */,
 			);
 			path = CurrentLocation;
 			sourceTree = "<group>";
@@ -169,6 +175,32 @@
 			children = (
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		A24058271FB44F6900CBC0EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A240580E1FB2F7F700CBC0EB /* LKCurrentLocationVC.h */,
+				A240580F1FB2F7F700CBC0EB /* LKCurrentLocationVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A24058281FB44F7B00CBC0EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A24058291FB44F8300CBC0EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A240582A1FB44FEF00CBC0EB /* LKCurrentLocation.xib */,
+				A20D34631FB458E000EF6DC2 /* LKCurrentLocationView.h */,
+				A20D34641FB458E000EF6DC2 /* LKCurrentLocationView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A24057E61FB2F76300CBC0EB /* LaunchScreen.storyboard in Resources */,
+				A240582B1FB44FEF00CBC0EB /* LKCurrentLocation.xib in Resources */,
 				A24057E31FB2F76300CBC0EB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +341,7 @@
 				A24057E91FB2F76300CBC0EB /* main.m in Sources */,
 				A24057DB1FB2F76200CBC0EB /* AppDelegate.m in Sources */,
 				A24058101FB2F7F700CBC0EB /* LKCurrentLocationVC.m in Sources */,
+				A20D34651FB458E000EF6DC2 /* LKCurrentLocationView.m in Sources */,
 				A240580D1FB2F78D00CBC0EB /* LKTabBarVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

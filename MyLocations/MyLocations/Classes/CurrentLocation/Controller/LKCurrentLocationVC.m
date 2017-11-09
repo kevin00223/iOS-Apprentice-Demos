@@ -7,6 +7,7 @@
 //
 
 #import "LKCurrentLocationVC.h"
+#import "LKCurrentLocationView.h"
 
 @interface LKCurrentLocationVC ()
 
@@ -17,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
+    LKCurrentLocationView *currentLocationView = [[NSBundle mainBundle] loadNibNamed:@"LKCurrentLocation" owner:nil options:nil].lastObject;
+    self.view = currentLocationView;
 }
 
 - (void)didReceiveMemoryWarning {
